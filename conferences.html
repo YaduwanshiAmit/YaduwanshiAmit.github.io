@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conferences | Amit Singh</title>
+    <!-- Tailwind CSS, Fonts, Icons -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { 'sans': ['Poppins', 'sans-serif'], },
+                    colors: { 'background': '#f8f9fa', 'surface': '#ffffff', 'primary': '#0d6efd', 'heading': '#212529', 'text': '#495057', 'muted': '#6c757d', },
+                },
+            },
+        }
+    </script>
+    <style>
+        html { scroll-behavior: smooth; }
+        body { background-color: #f8f9fa; color: #495057; }
+        .highlight { color: #0d6efd; }
+        .card { background-color: #ffffff; border: 1px solid #e9ecef; transition: all 0.3s ease; }
+        .card:hover { transform: translateY(-7px); box-shadow: 0 10px 30px -15px rgba(0,0,0,0.1); }
+        .nav-link { color: #495057; transition: color 0.3s; }
+        .nav-link:hover, .nav-link.active { color: #0d6efd; }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="sticky top-0 z-50 bg-background/80 backdrop-blur-md shadow-sm">
+        <nav class="container mx-auto px-6 md:px-10 py-4 flex justify-between items-center">
+            <a href="index.html" class="text-2xl font-bold highlight">Amit Singh</a>
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="research.html" class="nav-link">Research</a>
+                <a href="experience.html" class="nav-link">Experience</a>
+                <a href="conferences.html" class="nav-link active font-semibold">Conferences</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+            </div>
+            <button id="mobile-menu-button" class="md:hidden text-primary"><i class="fas fa-bars text-2xl"></i></button>
+        </nav>
+        <div id="mobile-menu" class="hidden md:hidden px-6 pb-4 space-y-4 text-center">
+            <a href="index.html" class="block nav-link">Home</a>
+            <a href="research.html" class="block nav-link">Research</a>
+            <a href="experience.html" class="block nav-link">Experience</a>
+            <a href="conferences.html" class="block nav-link active font-semibold">Conferences</a>
+            <a href="contact.html" class="block nav-link">Contact</a>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6 md:px-10 py-12">
+        <!-- Conference List Section -->
+        <section class="py-12">
+            <h1 class="text-4xl font-bold text-heading mb-4">Conference Presentations</h1>
+            <p class="text-lg text-muted max-w-3xl">A selection of oral and poster presentations delivered at national and international conferences.</p>
+
+            <div class="mt-12 max-w-4xl">
+                <div class="relative border-l-2 border-primary/20 pl-10">
+                    
+                    <!-- Conference Item 1 -->
+                    <div class="mb-10">
+                        <div class="absolute -left-3.5 mt-1.5 w-6 h-6 bg-primary rounded-full border-4 border-background"></div>
+                        <p class="font-mono text-sm text-muted">EGU 2024</p>
+                        <h3 class="text-xl font-bold text-heading">Potential of greenhouse gas emissions from urban lakes recharged with STP effluent</h3>
+                        <p class="font-medium text-primary">Oral Presentation</p>
+                    </div>
+
+                    <!-- Conference Item 2 -->
+                    <div class="mb-10">
+                        <div class="absolute -left-3.5 mt-1.5 w-6 h-6 bg-primary rounded-full border-4 border-background"></div>
+                        <p class="font-mono text-sm text-muted">First Central European Power-to-Gas Conference, Budapest, Hungary</p>
+                        <h3 class="text-xl font-bold text-heading">Role of Algal Bio-methanation in GHG Mitigation from Waterbodies (Lakes)</h3>
+                        <p class="font-medium text-primary">Oral Presentation</p>
+                    </div>
+
+                    <!-- Conference Item 3 -->
+                    <div class="mb-10">
+                        <div class="absolute -left-3.5 mt-1.5 w-6 h-6 bg-primary rounded-full border-4 border-background"></div>
+                        <p class="font-mono text-sm text-muted">International Symposium on Algal Research, IIT Guwahati</p>
+                        <h3 class="text-xl font-bold text-heading">Waste algae to biomethane for reducing greenhouse emissions from eutrophic lake</h3>
+                        <p class="font-medium text-primary">Oral Presentation</p>
+                    </div>
+
+                    <!-- Conference Item 4 -->
+                    <div class="mb-10">
+                        <div class="absolute -left-3.5 mt-1.5 w-6 h-6 bg-primary rounded-full border-4 border-background"></div>
+                        <p class="font-mono text-sm text-muted">3rd Int'l Conference on Pollution Prevention and Clean Technology, Czech Republic</p>
+                        <h3 class="text-xl font-bold text-heading">Quantifying the invisible threat: carbon emission from India’s eutrophic lakes</h3>
+                        <p class="font-medium text-primary">Online Poster Presentation</p>
+                    </div>
+
+                    <!-- Conference Item 5 -->
+                    <div class="mb-10">
+                        <div class="absolute -left-3.5 mt-1.5 w-6 h-6 bg-primary rounded-full border-4 border-background"></div>
+                        <p class="font-mono text-sm text-muted">8th International R&D Conference, IIT Roorkee</p>
+                        <h3 class="text-xl font-bold text-heading">Water quality assessment and management of urban lakes</h3>
+                        <p class="font-medium text-primary">Oral Presentation</p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-surface border-t mt-12">
+        <div class="container mx-auto px-6 md:px-10 py-6 text-center text-muted">
+            <p>&copy; 2025 Amit Singh. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>
