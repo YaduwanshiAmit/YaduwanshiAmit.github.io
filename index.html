@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amit Singh | PhD Researcher</title>
+    <!-- Tailwind CSS for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary': '#06b6d4', // Cyan 500
+                        'primary-hover': '#0891b2', // Cyan 600
+                        'dark-bg': '#0f172a', // Slate 900
+                        'light-bg': '#1e293b', // Slate 800
+                        'light-text': '#cbd5e1', // Slate 300
+                        'heading-text': '#f1f5f9', // Slate 100
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0f172a; /* dark-bg */
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        .section-heading {
+            color: #f1f5f9; /* heading-text */
+        }
+        .card {
+            background-color: #1e293b; /* light-bg */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body class="text-light-text">
+
+    <!-- Header -->
+    <header class="bg-dark-bg/70 backdrop-blur-lg sticky top-0 z-40">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold text-heading-text">Amit Singh</a>
+            <div class="hidden md:flex space-x-6">
+                <a href="#about" class="hover:text-primary transition-colors">About</a>
+                <a href="#research" class="hover:text-primary transition-colors">Research</a>
+                <a href="#publications" class="hover:text-primary transition-colors">Publications</a>
+                <a href="#experience" class="hover:text-primary transition-colors">Experience</a>
+                <a href="#contact" class="bg-primary text-white px-4 py-2 rounded-md hover:bg-primary-hover transition-colors">Contact</a>
+            </div>
+            <button id="mobile-menu-button" class="md:hidden text-light-text">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+        </nav>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden px-6 pb-4 space-y-2">
+            <a href="#about" class="block hover:text-primary transition-colors">About</a>
+            <a href="#research" class="block hover:text-primary transition-colors">Research</a>
+            <a href="#publications" class="block hover:text-primary transition-colors">Publications</a>
+            <a href="#experience" class="block hover:text-primary transition-colors">Experience</a>
+            <a href="#contact" class="block mt-2 text-center bg-primary text-white px-4 py-2 rounded-md hover:bg-primary-hover transition-colors">Contact</a>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6 py-12">
+        <!-- Hero Section -->
+        <section id="home" class="my-16">
+            <div class="flex flex-col md:flex-row items-center gap-10">
+                <div class="md:w-1/3 text-center">
+                    <img src="https://placehold.co/400x400/0f172a/06b6d4?text=AS" 
+                         onerror="this.onerror=null;this.src='https://placehold.co/400x400/cccccc/ffffff?text=Image+Not+Found';" 
+                         alt="Amit Singh" 
+                         class="rounded-full w-60 h-60 md:w-72 md:h-72 mx-auto shadow-2xl border-4 border-light-bg">
+                </div>
+                <div class="md:w-2/3 text-center md:text-left">
+                    <h1 class="text-4xl md:text-6xl font-extrabold text-heading-text">Amit Singh</h1>
+                    <p class="text-2xl text-primary font-semibold mt-2 mb-4">PMRF Research Scholar | IIT Roorkee</p>
+                    <p class="text-lg max-w-2xl">
+                        PhD Candidate specializing in GHG mitigation, anaerobic digestion, and the techno-environ-economic assessment of renewable energy technologies.
+                    </p>
+                    <div class="mt-8 flex justify-center md:justify-start gap-4">
+                        <a href="#publications" class="bg-primary text-white font-semibold px-6 py-3 rounded-lg shadow-lg hover:bg-primary-hover transition-transform transform hover:scale-105">
+                            My Research
+                        </a>
+                        <a href="mailto:amit_s@hre.iitr.ac.in" class="bg-light-bg text-heading-text font-semibold px-6 py-3 rounded-lg shadow-lg hover:bg-slate-700 transition-transform transform hover:scale-105">
+                            Email Me
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Me Section -->
+        <section id="about" class="my-24 scroll-mt-20">
+            <h2 class="text-3xl font-bold text-center section-heading mb-12">About Me</h2>
+            <div class="card p-8 rounded-lg">
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div>
+                        <h3 class="text-xl font-bold text-primary mb-3">Research Interests</h3>
+                        <ul class="space-y-2">
+                            <li class="flex items-start"><i class="fas fa-flask text-primary mt-1 mr-3"></i><span>GHG measurement and mitigation from lentic waterbodies</span></li>
+                            <li class="flex items-start"><i class="fas fa-flask text-primary mt-1 mr-3"></i><span>Anaerobic Digestion</span></li>
+                            <li class="flex items-start"><i class="fas fa-flask text-primary mt-1 mr-3"></i><span>Techno-environ-economic assessment of green technology</span></li>
+                            <li class="flex items-start"><i class="fas fa-flask text-primary mt-1 mr-3"></i><span>Energy recovery from waste</span></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-primary mb-3">Education</h3>
+                        <ul class="space-y-4">
+                            <li>
+                                <p class="font-bold text-heading-text">Ph.D. in Hydro and Renewable Energy</p>
+                                <p>Indian Institute of Technology, Roorkee (2023-Present)</p>
+                            </li>
+                            <li>
+                                <p class="font-bold text-heading-text">Postgraduate (M.Tech)</p>
+                                <p>National Institute of Technology, Kurukshetra (2021)</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Research Section -->
+        <section id="research" class="my-24 scroll-mt-20">
+            <h2 class="text-3xl font-bold text-center section-heading mb-12">Core Research</h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="card p-6 rounded-lg">
+                    <h3 class="text-xl font-bold text-primary mb-2">PhD Thesis</h3>
+                    <p class="font-semibold text-heading-text mb-2">Techno-environ-economic assessment of waste algae to biogas for GHG mitigation from eutrophic lakes</p>
+                    <p>This work aims to accurately measure and assess GHG dynamics of eutrophicated lakes along with energy recovery and surface water flux.</p>
+                </div>
+                <div class="card p-6 rounded-lg">
+                    <h3 class="text-xl font-bold text-primary mb-2">Key Project</h3>
+                    <p class="font-semibold text-heading-text mb-2">Waste algae to biogas for clean energy and environment</p>
+                    <p>Focused on evaluating the prospects of converting waste algae into biogas as a sustainable solution for clean energy and environmental management.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Publications Section -->
+        <section id="publications" class="my-24 scroll-mt-20">
+            <h2 class="text-3xl font-bold text-center section-heading mb-12">Publications</h2>
+            <div class="space-y-6">
+                <div class="card p-6 rounded-lg">
+                    <p class="mb-2">Singh, A., Rana, M. S., Tiwari, H., et al. (2023). Anaerobic digestion as a tool to manage eutrophication and associated greenhouse gas emission. <strong class="text-heading-text">Science of The Total Environment</strong>.</p>
+                    <a href="https://doi.org/10.1016/j.scitotenv.2022.160722" target="_blank" class="text-primary hover:underline">Read Paper <i class="fas fa-arrow-right ml-1"></i></a>
+                </div>
+                <div class="card p-6 rounded-lg">
+                    <p class="mb-2">Singh, A., Anand, V., Bai, A., et al. (2023). Waste Algae for Bioenergy Generation to Mitigate Eutrophication and Greenhouse Emissions in Water Bodies. <strong class="text-heading-text">Periodica Polytechnica Chemical Engineering</strong>.</p>
+                    <a href="https://doi.org/10.3311/PPch.22005" target="_blank" class="text-primary hover:underline">Read Paper <i class="fas fa-arrow-right ml-1"></i></a>
+                </div>
+                 <div class="card p-6 rounded-lg">
+                    <p class="mb-2">Bai, A., Balogh, P., Nagy, A., et al. (2023). Economic Evaluation of a 1 MWel Capacity Power-to-Biomethane System. <strong class="text-heading-text">Energies</strong>.</p>
+                    <a href="https://doi.org/10.3390/en16248009" target="_blank" class="text-primary hover:underline">Read Paper <i class="fas fa-arrow-right ml-1"></i></a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience & Awards -->
+        <section id="experience" class="my-24 scroll-mt-20">
+            <h2 class="text-3xl font-bold text-center section-heading mb-12">Experience & Awards</h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="card p-6 rounded-lg">
+                    <h3 class="text-xl font-bold text-primary mb-4">Responsibilities</h3>
+                    <ul class="space-y-4">
+                        <li><strong class="text-heading-text">Finance Assistant</strong> at American Water Works Association</li>
+                        <li><strong class="text-heading-text">Student Coordinator</strong> for Workshop on Carbon Footprints Estimation</li>
+                    </ul>
+                </div>
+                <div class="card p-6 rounded-lg">
+                    <h3 class="text-xl font-bold text-primary mb-4">Achievements</h3>
+                    <ul class="space-y-2">
+                        <li>Recipient of PMRF scholarship (Cycle 11)</li>
+                        <li>GATE Qualified (2018, 2019, 2020)</li>
+                        <li>Multiple international conference presentations</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="my-24 scroll-mt-20 text-center">
+            <h2 class="text-3xl font-bold section-heading mb-4">Contact</h2>
+            <p class="max-w-xl mx-auto mb-8">I'm always open to discussing research, collaborations, or new opportunities. Feel free to reach out.</p>
+            <a href="mailto:amit_s@hre.iitr.ac.in" class="inline-block bg-primary text-white font-bold text-lg px-8 py-4 rounded-lg shadow-lg hover:bg-primary-hover transition-transform transform hover:scale-105">
+                <i class="fas fa-envelope mr-3"></i> amit_s@hre.iitr.ac.in
+            </a>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-700 mt-16">
+        <div class="container mx-auto px-6 py-6 text-center text-slate-400">
+            <p>&copy; 2025 Amit Singh. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>
