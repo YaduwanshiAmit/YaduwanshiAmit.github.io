@@ -12,6 +12,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,500&display=swap" rel="stylesheet">
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- MathJax for high-quality mathematical and chemical equation rendering -->
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     
     <style>
         body {
@@ -32,12 +34,26 @@
             from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
         }
+        /* Custom scrollbar for chat elements */
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 5px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 9999px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
     </style>
 </head>
 <body class="bg-[#f8fafc] text-slate-800 flex flex-col min-h-screen">
 
     <!-- Top Alert bar: Highlighting PMRF Status -->
-    <div class="bg-gradient-to-r from-blue-700 to-indigo-800 text-white text-xs md:text-sm font-semibold py-2 px-4 text-center">
+    <div class="bg-gradient-to-r from-blue-700 to-indigo-800 text-white text-xs md:text-sm font-semibold py-2.5 px-4 text-center">
         <span class="inline-block bg-blue-500/30 text-blue-200 px-2 py-0.5 rounded text-[10px] uppercase tracking-wide mr-2">PMRF Scholar</span>
         Recipient of the prestigious Prime Minister's Research Fellowship (PMRF), Government of India
     </div>
@@ -49,13 +65,13 @@
                 <!-- Branding logo -->
                 <div class="flex flex-col">
                     <a href="javascript:void(0)" onclick="switchTab('home')" class="text-2xl font-bold tracking-tight text-slate-900 flex items-center gap-2">
-                        <span class="bg-indigo-600 text-white p-1.5 rounded-lg text-sm w-8 h-8 flex items-center justify-center">AS</span>
+                        <span class="bg-indigo-600 text-white p-1.5 rounded-lg text-sm w-8 h-8 flex items-center justify-center font-extrabold">AS</span>
                         <span>Amit Singh</span>
                     </a>
                     <span class="text-[11px] font-semibold tracking-wider text-slate-500 uppercase">IIT Roorkee Scholar</span>
                 </div>
 
-                <!-- Desktop Navigation Menu (Matching Google Sites pages) -->
+                <!-- Desktop Navigation Menu -->
                 <nav class="hidden xl:flex items-center space-x-1">
                     <button onclick="switchTab('home')" data-tab-btn="home" class="nav-btn px-3 py-2 text-sm font-medium rounded-md text-indigo-600 bg-indigo-50">Home</button>
                     <button onclick="switchTab('academic')" data-tab-btn="academic" class="nav-btn px-3 py-2 text-sm font-medium rounded-md text-slate-600 hover:text-indigo-600 hover:bg-slate-50">Academic Details</button>
@@ -64,6 +80,9 @@
                     <button onclick="switchTab('conferences')" data-tab-btn="conferences" class="nav-btn px-3 py-2 text-sm font-medium rounded-md text-slate-600 hover:text-indigo-600 hover:bg-slate-50">Conferences</button>
                     <button onclick="switchTab('teaching')" data-tab-btn="teaching" class="nav-btn px-3 py-2 text-sm font-medium rounded-md text-slate-600 hover:text-indigo-600 hover:bg-slate-50">Teaching & Training</button>
                     <button onclick="switchTab('extracurricular')" data-tab-btn="extracurricular" class="nav-btn px-3 py-2 text-sm font-medium rounded-md text-slate-600 hover:text-indigo-600 hover:bg-slate-50">Gallery & Extra</button>
+                    <button onclick="switchTab('ai-lab')" data-tab-btn="ai-lab" class="nav-btn px-3 py-2 text-sm font-semibold rounded-md text-indigo-700 bg-indigo-50 border border-indigo-200/50 hover:bg-indigo-100 transition flex items-center gap-1.5 font-bold">
+                        <span>✨ AI Lab</span>
+                    </button>
                     <button onclick="switchTab('contact')" data-tab-btn="contact" class="nav-btn px-4 py-2 text-sm font-semibold rounded-lg bg-indigo-600 text-white hover:bg-indigo-700 transition shadow-md">Contact</button>
                 </nav>
 
@@ -85,9 +104,18 @@
             <button onclick="switchTab('conferences')" class="mobile-nav-btn block w-full text-left px-4 py-2.5 rounded-lg text-slate-700 hover:bg-slate-50 font-medium">Conferences</button>
             <button onclick="switchTab('teaching')" class="mobile-nav-btn block w-full text-left px-4 py-2.5 rounded-lg text-slate-700 hover:bg-slate-50 font-medium">Teaching & Training</button>
             <button onclick="switchTab('extracurricular')" class="mobile-nav-btn block w-full text-left px-4 py-2.5 rounded-lg text-slate-700 hover:bg-slate-50 font-medium">Gallery & Extra</button>
+            <button onclick="switchTab('ai-lab')" class="mobile-nav-btn block w-full text-left px-4 py-2.5 rounded-lg text-indigo-700 bg-indigo-50 font-bold border border-indigo-200">✨ AI Lab</button>
             <button onclick="switchTab('contact')" class="mobile-nav-btn block w-full text-center mt-3 px-4 py-2.5 rounded-lg bg-indigo-600 text-white font-semibold">Contact</button>
         </div>
     </header>
+
+    <!-- Custom DOM Toast Message box -->
+    <div id="custom-toast" class="fixed bottom-5 right-5 z-50 transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none">
+        <div id="toast-bg" class="bg-slate-900 text-white px-5 py-3.5 rounded-xl shadow-2xl border border-slate-700/60 flex items-center gap-3">
+            <span id="toast-icon" class="text-emerald-400"><i class="fa-solid fa-circle-check text-lg"></i></span>
+            <span id="toast-text" class="text-sm font-medium">Notification message</span>
+        </div>
+    </div>
 
     <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 w-full">
 
@@ -97,9 +125,11 @@
             <div class="bg-white rounded-3xl border border-slate-200 p-8 md:p-12 shadow-sm mb-12 flex flex-col lg:flex-row gap-10 items-center">
                 <!-- Profile Image & Quick Links -->
                 <div class="w-full lg:w-1/3 flex flex-col items-center">
-                    <div class="relative w-48 h-48 md:w-60 md:h-60 rounded-2xl overflow-hidden shadow-lg border-4 border-white ring-4 ring-indigo-50">
-                        <!-- Custom Placeholder avatar / profile picture -->
-                        <div class="w-full h-full bg-slate-100 flex items-center justify-center text-slate-300">
+                    <div class="relative w-48 h-48 md:w-60 md:h-60 rounded-2xl overflow-hidden shadow-lg border-4 border-white ring-4 ring-indigo-50 bg-slate-50 flex items-center justify-center">
+                        <!-- Real Profile Image with automatic fallback if missing -->
+                        <img id="profile-img" src="images/profile.jpg" alt="Amit Singh Profile" class="w-full h-full object-cover" onerror="this.style.display='none'; document.getElementById('profile-placeholder').classList.remove('hidden');">
+                        <!-- Custom Placeholder avatar shown only if real image is missing/not uploaded -->
+                        <div id="profile-placeholder" class="hidden w-full h-full bg-slate-100 flex items-center justify-center text-slate-300">
                             <i class="fa-solid fa-user-graduate text-8xl"></i>
                         </div>
                     </div>
@@ -179,7 +209,7 @@
                 </div>
             </div>
 
-            <!-- Custom Interactive Visual Schematics (Replaces Google Sites' low-res screenshots) -->
+            <!-- Custom Interactive Visual Schematics -->
             <div class="my-16">
                 <div class="text-center max-w-2xl mx-auto mb-10">
                     <span class="text-xs font-bold text-indigo-600 uppercase tracking-widest bg-indigo-50 px-3 py-1 rounded-full">Key Diagrams</span>
@@ -919,8 +949,11 @@
                     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
                         <!-- Image item 1 -->
                         <div class="bg-white rounded-xl overflow-hidden border border-slate-200 shadow-sm hover:scale-[1.02] transition">
-                            <div class="h-44 bg-slate-100 flex items-center justify-center text-slate-300">
-                                <i class="fa-solid fa-water-ladder text-5xl"></i>
+                            <div class="h-44 bg-slate-50 flex items-center justify-center overflow-hidden relative">
+                                <img src="images/field_sampling.jpg" alt="Field Gas Sampling" class="w-full h-full object-cover" onerror="this.style.display='none'; document.getElementById('gal-placeholder-1').classList.remove('hidden');">
+                                <div id="gal-placeholder-1" class="hidden w-full h-full bg-slate-100 flex items-center justify-center text-slate-300">
+                                    <i class="fa-solid fa-water-ladder text-5xl"></i>
+                                </div>
                             </div>
                             <div class="p-3">
                                 <h4 class="font-bold text-slate-800 text-xs">Field Gas Sampling</h4>
@@ -929,8 +962,11 @@
                         </div>
                         <!-- Image item 2 -->
                         <div class="bg-white rounded-xl overflow-hidden border border-slate-200 shadow-sm hover:scale-[1.02] transition">
-                            <div class="h-44 bg-slate-100 flex items-center justify-center text-slate-300">
-                                <i class="fa-solid fa-flask-vial text-5xl"></i>
+                            <div class="h-44 bg-slate-50 flex items-center justify-center overflow-hidden relative">
+                                <img src="images/bioreactor_setup.jpg" alt="Algal Bioreactor Setup" class="w-full h-full object-cover" onerror="this.style.display='none'; document.getElementById('gal-placeholder-2').classList.remove('hidden');">
+                                <div id="gal-placeholder-2" class="hidden w-full h-full bg-slate-100 flex items-center justify-center text-slate-300">
+                                    <i class="fa-solid fa-flask-vial text-5xl"></i>
+                                </div>
                             </div>
                             <div class="p-3">
                                 <h4 class="font-bold text-slate-800 text-xs">Algal Bioreactor Setup</h4>
@@ -939,12 +975,144 @@
                         </div>
                         <!-- Image item 3 -->
                         <div class="bg-white rounded-xl overflow-hidden border border-slate-200 shadow-sm hover:scale-[1.02] transition">
-                            <div class="h-44 bg-slate-100 flex items-center justify-center text-slate-300">
-                                <i class="fa-solid fa-users text-5xl"></i>
+                            <div class="h-44 bg-slate-50 flex items-center justify-center overflow-hidden relative">
+                                <img src="images/lab_group.jpg" alt="Lab Research Group" class="w-full h-full object-cover" onerror="this.style.display='none'; document.getElementById('gal-placeholder-3').classList.remove('hidden');">
+                                <div id="gal-placeholder-3" class="hidden w-full h-full bg-slate-100 flex items-center justify-center text-slate-300">
+                                    <i class="fa-solid fa-users text-5xl"></i>
+                                </div>
                             </div>
                             <div class="p-3">
                                 <h4 class="font-bold text-slate-800 text-xs">Lab Research Group</h4>
                                 <p class="text-[10px] text-slate-500 mt-0.5">Members of the Environment and Biofuel Research Lab, HRED.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ================= ✨ AI LAB TAB ================= -->
+        <section id="ai-lab" class="tab-content">
+            <div class="max-w-6xl mx-auto space-y-12">
+                <div class="text-center">
+                    <span class="text-xs font-bold text-indigo-600 uppercase tracking-widest bg-indigo-50 px-3 py-1 rounded-full">Interactive AI Features</span>
+                    <h2 class="text-3xl font-extrabold text-slate-900 mt-3">✨ PMRF Research Assistant AI Lab</h2>
+                    <p class="text-sm text-slate-500 mt-2">Interact with Gemini-powered cognitive agents trained on Amit Singh's green energy publications</p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                    <!-- Chat Panel (7 cols) -->
+                    <div class="lg:col-span-7 bg-white rounded-3xl border border-slate-200 shadow-sm flex flex-col overflow-hidden h-[600px]">
+                        <!-- Chat Header -->
+                        <div class="bg-slate-50 p-4 border-b border-slate-200 flex items-center justify-between">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-xl bg-indigo-600 text-white flex items-center justify-center text-md font-bold shadow-md">
+                                    <i class="fa-solid fa-microchip"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-slate-800 text-sm">✨ Amit's Virtual Co-Pilot</h3>
+                                    <p class="text-[10px] text-slate-500 flex items-center gap-1">
+                                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 inline-block animate-pulse"></span>
+                                        Powered by Gemini 2.5 Flash
+                                    </p>
+                                </div>
+                            </div>
+                            <button onclick="clearChatHistory()" class="text-xs text-slate-400 hover:text-rose-500 font-medium transition flex items-center gap-1">
+                                <i class="fa-regular fa-trash-can"></i> Clear History
+                            </button>
+                        </div>
+
+                        <!-- Chat Message Area -->
+                        <div id="chat-messages" class="flex-grow p-5 overflow-y-auto space-y-4 custom-scrollbar bg-slate-50/50">
+                            <!-- Assistant Welcome message -->
+                            <div class="flex items-start gap-3 max-w-[85%]">
+                                <div class="w-8 h-8 rounded-lg bg-indigo-600 text-white flex items-center justify-center text-xs flex-shrink-0">
+                                    <i class="fa-solid fa-graduation-cap"></i>
+                                </div>
+                                <div class="bg-white p-3.5 rounded-r-2xl rounded-bl-2xl shadow-sm border border-slate-200/60">
+                                    <p class="text-slate-600 text-sm leading-relaxed">
+                                        Welcome to Amit Singh's Research Lab! I am Amit's virtual assistant. Ask me anything about his Ph.D. research, his published journal papers, water remediation projects, or Sabatier methanation setups.
+                                    </p>
+                                    <p class="text-slate-500 text-xs mt-2 font-semibold">Suggested Questions:</p>
+                                    <div class="flex flex-wrap gap-2 mt-2">
+                                        <button onclick="sendQuickQuery('What are the greenhouse gas pathways in eutrophic lakes?')" class="bg-slate-50 hover:bg-indigo-50 hover:text-indigo-600 text-slate-600 border border-slate-200 hover:border-indigo-100 transition text-[11px] px-2.5 py-1.5 rounded-lg text-left">
+                                            📊 GHG Lake Pathways
+                                        </button>
+                                        <button onclick="sendQuickQuery('Explain the P2M circular system diagram.')" class="bg-slate-50 hover:bg-indigo-50 hover:text-indigo-600 text-slate-600 border border-slate-200 hover:border-indigo-100 transition text-[11px] px-2.5 py-1.5 rounded-lg text-left">
+                                            🔄 P2M Circular Bio-refinery
+                                        </button>
+                                        <button onclick="sendQuickQuery('Summarize your STOTEN 2023 paper on eutrophication.')" class="bg-slate-50 hover:bg-indigo-50 hover:text-indigo-600 text-slate-600 border border-slate-200 hover:border-indigo-100 transition text-[11px] px-2.5 py-1.5 rounded-lg text-left">
+                                            📄 STOTEN 2023 Summary
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Chat Loading indicator -->
+                        <div id="chat-loading" class="hidden p-4 bg-slate-50 flex items-center gap-3 border-t border-slate-200">
+                            <span class="relative flex h-3 w-3">
+                                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75"></span>
+                                <span class="relative inline-flex rounded-full h-3 w-3 bg-indigo-600"></span>
+                            </span>
+                            <span class="text-xs text-slate-500 font-medium">✨ Virtual Assistant is compiling academic context...</span>
+                        </div>
+
+                        <!-- Chat Input bar -->
+                        <div class="p-4 border-t border-slate-200 bg-white">
+                            <form id="chat-input-form" onsubmit="handleChatSubmit(event)" class="flex gap-2">
+                                <input type="text" id="chat-query" class="flex-grow px-4 py-2.5 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 placeholder-slate-400" placeholder="Type an academic or technical question..." required>
+                                <button type="submit" class="bg-indigo-600 text-white font-semibold px-5 rounded-xl hover:bg-indigo-700 transition flex items-center justify-center gap-1.5 shadow-md">
+                                    <span>Send</span> <i class="fa-regular fa-paper-plane text-xs"></i>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- Tool Panel (5 cols) -->
+                    <div class="lg:col-span-5 flex flex-col gap-6">
+                        <!-- Abstract Optimizer Tool -->
+                        <div class="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm space-y-4">
+                            <div class="flex items-center gap-2">
+                                <span class="text-indigo-600 text-lg"><i class="fa-solid fa-wand-magic-sparkles"></i></span>
+                                <h3 class="font-bold text-slate-900 text-md">✨ Abstract & Research Enhancer</h3>
+                            </div>
+                            <p class="text-xs text-slate-500 leading-relaxed">
+                                Paste your draft scientific abstract, thesis statement, or engineering hypothesis. Our system prompts Gemini to enhance scientific terminology, extract key process parameters, and propose improvements.
+                            </p>
+
+                            <div class="space-y-3">
+                                <div>
+                                    <label for="draft-abstract" class="block text-[10px] font-bold text-slate-600 uppercase mb-1">Your Draft Abstract</label>
+                                    <textarea id="draft-abstract" rows="6" class="w-full px-3 py-2 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 text-xs custom-scrollbar placeholder-slate-400" placeholder="Paste your draft abstract here..." required></textarea>
+                                </div>
+                                <div>
+                                    <label for="enhancer-type" class="block text-[10px] font-bold text-slate-600 uppercase mb-1">Enhancement Goal</label>
+                                    <select id="enhancer-type" class="w-full px-3 py-2 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 text-xs">
+                                        <option value="academic">Refine Scientific Vocabulary & Academic Tone</option>
+                                        <option value="parameters">Extract Process Variables & Suggest Methods</option>
+                                        <option value="circular">Assess Circular Economy / P2G Feasibility</option>
+                                    </select>
+                                </div>
+                                <button onclick="enhanceAbstract()" class="w-full bg-indigo-600 text-white font-bold py-2.5 rounded-xl hover:bg-indigo-700 transition shadow-md text-xs flex items-center justify-center gap-2">
+                                    <span>✨ Optimize Draft</span> <i class="fa-solid fa-arrows-spin animate-spin hidden" id="enhancer-spin"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Enhancer output panel -->
+                        <div id="enhancer-output-card" class="hidden bg-slate-900 text-slate-100 p-6 rounded-3xl border border-slate-800 shadow-xl flex-grow flex flex-col overflow-hidden max-h-[350px]">
+                            <div class="flex justify-between items-center mb-3">
+                                <span class="text-xs font-bold text-indigo-400 flex items-center gap-1.5">
+                                    <i class="fa-solid fa-check"></i> Enhanced Results
+                                </span>
+                                <button onclick="copyEnhancedOutput()" class="text-xs text-slate-400 hover:text-white font-semibold transition flex items-center gap-1">
+                                    <i class="fa-regular fa-copy"></i> Copy Response
+                                </button>
+                            </div>
+                            <div id="enhancer-response" class="text-xs overflow-y-auto custom-scrollbar flex-grow space-y-2 leading-relaxed">
+                                <!-- Enhanced response prints here -->
                             </div>
                         </div>
                     </div>
@@ -987,7 +1155,7 @@
                                         Indian Institute of Technology Roorkee,<br>
                                         Roorkee, Uttarakhand, India - 247667
                                     </p>
-                                </div>
+                                end
                             </div>
                         </div>
 
@@ -1012,7 +1180,7 @@
                     <div class="bg-white p-6 md:p-8 rounded-2xl border border-slate-200 shadow-sm">
                         <h3 class="text-xl font-bold text-slate-900 mb-6">Send a Message</h3>
                         
-                        <form action="#" method="POST" class="space-y-4" onsubmit="event.preventDefault(); alert('Message sending simulated successfully!');">
+                        <form action="#" id="contact-form" class="space-y-4">
                             <div>
                                 <label for="form-name" class="block text-xs font-bold text-slate-600 uppercase mb-1">Full Name</label>
                                 <input type="text" id="form-name" class="w-full px-3 py-2 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm" placeholder="Your Name" required>
@@ -1099,7 +1267,8 @@
                     (tabId === 'publications' && text.includes('publications')) ||
                     (tabId === 'conferences' && text.includes('conferences')) ||
                     (tabId === 'teaching' && text.includes('teaching')) ||
-                    (tabId === 'extracurricular' && text.includes('gallery'))
+                    (tabId === 'extracurricular' && text.includes('gallery')) ||
+                    (tabId === 'ai-lab' && text.includes('ai'))
                 ) {
                     btn.classList.remove('text-slate-700', 'hover:bg-slate-50');
                     btn.classList.add('text-indigo-600', 'bg-indigo-50');
@@ -1146,10 +1315,310 @@
             });
         }
 
+        // Custom alert toast launcher
+        function showToast(message, isError = false) {
+            const toast = document.getElementById('custom-toast');
+            const toastText = document.getElementById('toast-text');
+            const toastBg = document.getElementById('toast-bg');
+            const toastIcon = document.getElementById('toast-icon');
+            
+            toastText.textContent = message;
+            
+            if (isError) {
+                toastBg.className = "bg-rose-950 text-rose-200 px-5 py-3.5 rounded-xl shadow-2xl border border-rose-800 flex items-center gap-3";
+                toastIcon.className = "text-rose-400";
+                toastIcon.innerHTML = `<i class="fa-solid fa-triangle-exclamation text-lg"></i>`;
+            } else {
+                toastBg.className = "bg-slate-900 text-white px-5 py-3.5 rounded-xl shadow-2xl border border-slate-700/60 flex items-center gap-3";
+                toastIcon.className = "text-emerald-400";
+                toastIcon.innerHTML = `<i class="fa-solid fa-circle-check text-lg"></i>`;
+            }
+
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            toast.classList.add('translate-y-0', 'opacity-100');
+
+            setTimeout(() => {
+                toast.classList.add('translate-y-20', 'opacity-0');
+                toast.classList.remove('translate-y-0', 'opacity-100');
+            }, 3500);
+        }
+
+        // Handling contact form submits with custom toast confirmation
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            showToast('Message sending simulated successfully!');
+            this.reset();
+        });
+
         // Toggle mobile menu drawer
         document.getElementById('mobile-menu-toggle').addEventListener('click', function() {
             document.getElementById('mobile-menu').classList.toggle('hidden');
         });
+
+        /* ==================== ✨ GEMINI API INTEGRATIONS ==================== */
+        const apiKey = ""; // Filled automatically by environmental runner at runtime.
+        
+        // Context profile block representing Amit Singh's academic profile for model system priming.
+        const AMIT_RESEARCH_BIO = `
+You are Amit Singh's Virtual Research Assistant. Amit is a Prime Minister's Research Fellow (PMRF) in the Department of Hydro and Renewable Energy (HRED) at the Indian Institute of Technology Roorkee (IIT Roorkee).
+His research advisor is Prof. Sanjeev Kumar Prajapati (IIT Roorkee) and his international collaborator is Prof. Attila Bai (University of Debrecen, Hungary).
+
+Key Academic profile features:
+- Ph.D. Focus: "Waste algae to biogas for clean energy and environment: Techno-environ-economic prospects".
+- Main goals: Biogas upgrading, water body remediation, nature-based microalgal harvesting, biomethanation kinetics, circular economy, and greenhouse gas (GHG) modeling.
+- Master's Degree: M.Tech in Environmental Engineering from National Institute of Technology (NIT) Kurukshetra.
+- Bachelor's Degree: B.Tech in Civil Engineering from AKTU.
+
+Key Publications & Concepts:
+1. "Anaerobic digestion as a tool to manage eutrophication and associated greenhouse gas emission" (Science of the Total Environment, STOTEN, 2023) - Demonstrates how microalgae blooms in eutrophic waters (recharged with secondary-treated sewage treatment plant / STP effluents) can be harvested as a biomass feedstock, mitigating raw CO2 and CH4 diffusive and ebullitive emissions.
+2. "Microwave-assisted pyrolysis of biomass for bioenergy production" (Renewable and Sustainable Energy Reviews, 2026) - Explores kinetics of fast thermal biomass breakdown.
+3. "Waste algae for bioenergy generation to mitigate eutrophication and greenhouse emissions in water bodies" (Periodica Polytechnica Chemical Engineering, 2023).
+4. "Exploring spatiotemporal water quality change of eutrophicated urban lake" (Sustainable Chemistry One World, 2025).
+
+Core Engineering Frameworks of Amit's Lab:
+- GHG Pathways in Ponds: Shows Solar Ingress triggering microalgal blooms. Diffusive fluxes of CO2 & CH4 escape boundaries alongside Benthic Methanogenesis bubbles escaping as "ebullition".
+- Floating Chamber Design: Measures direct gas flux rates. Uses boundary accumulation, volume-to-area proportions, and slope values (dC/dt) computed with ideal gas parameters.
+- Power-to-Gas (P2G / P2M) refinery: Harvests lake microalgae to feed anaerobic digesters (AD). Biogas produced (typically 60% CH4, 40% CO2) is upgraded inside the biological reactor by injecting Green Hydrogen (H2) produced via solar-water electrolysis, driving Sabatier biological upgrading to methane values higher than 95% (CH4 > 95%).
+
+Respond to users in a professional, scientific, polite, and encouraging academic tone. Reference his papers and advisors naturally when answering. Use LaTeX notation ($CO_2$, $CH_4$, $dC/dt$, etc.) for scientific notation and variables.
+        `;
+
+        // Exponential backoff fetch helper
+        async function fetchGeminiWithRetry(url, options, maxRetries = 5) {
+            let delay = 1000;
+            for (let i = 0; i < maxRetries; i++) {
+                try {
+                    const response = await fetch(url, options);
+                    if (response.ok) {
+                        return response;
+                    }
+                    if (response.status === 429 || response.status >= 500) {
+                        // Trigger backoff only on server overload/rate limits
+                        throw new Error(`Server Status: ${response.status}`);
+                    }
+                    return response;
+                } catch (error) {
+                    if (i === maxRetries - 1) throw error;
+                    await new Promise(resolve => setTimeout(resolve, delay));
+                    delay *= 2; // Double delay duration
+                }
+            }
+        }
+
+        // Generic wrapper to talk to Gemini API
+        async function requestGemini(prompt, systemPrompt) {
+            const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
+            const payload = {
+                contents: [{ parts: [{ text: prompt }] }],
+                systemInstruction: { parts: [{ text: systemPrompt }] }
+            };
+
+            const options = {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            };
+
+            try {
+                const response = await fetchGeminiWithRetry(url, options);
+                const data = await response.json();
+                if (!response.ok) {
+                    throw new Error(data.error?.message || 'Gemini API Error');
+                }
+                return data.candidates?.[0]?.content?.parts?.[0]?.text || 'No response returned.';
+            } catch (err) {
+                console.error(err);
+                throw err;
+            }
+        }
+
+        // Parse markdown formatting natively for display
+        function parseMarkdown(text) {
+            if (!text) return "";
+            // Sanitize tags
+            let html = text
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;");
+                
+            // Headers
+            html = html.replace(/^### (.*$)/gim, '<h5 class="text-sm font-bold text-indigo-400 mt-3 mb-1">$1</h5>');
+            html = html.replace(/^## (.*$)/gim, '<h4 class="text-xs font-bold text-slate-300 mt-4 mb-2">$1</h4>');
+            html = html.replace(/^# (.*$)/gim, '<h3 class="text-sm font-bold text-indigo-300 mt-5 mb-3">$1</h3>');
+            
+            // Bold
+            html = html.replace(/\*\*(.*?)\*\*/g, '<strong class="font-bold text-white">$1</strong>');
+            
+            // Bullet points
+            html = html.replace(/^\s*[-*+]\s+(.*)$/gim, '<div class="flex items-start gap-1.5 ml-2 my-1"><span class="text-indigo-400 mt-0.5">•</span><span class="text-slate-300 text-xs">$1</span></div>');
+            
+            // Line break paragraphs
+            html = html.replace(/\n\n+/g, '<br class="my-2">');
+
+            return html;
+        }
+
+        // Dynamic MathJax Typesetting trigger
+        function triggerMathJaxRender() {
+            if (typeof MathJax !== 'undefined') {
+                setTimeout(() => {
+                    MathJax.typesetPromise();
+                }, 150);
+            }
+        }
+
+        /* ----- FEATURE 1: Virtual Co-pilot Chat Assistant ----- */
+        let chatHistory = [];
+
+        async function handleChatSubmit(event) {
+            event.preventDefault();
+            const queryInput = document.getElementById('chat-query');
+            const query = queryInput.value.trim();
+            if (!query) return;
+
+            // Push User message
+            appendChatMessage(query, 'user');
+            queryInput.value = '';
+
+            // Loading state
+            const loader = document.getElementById('chat-loading');
+            loader.classList.remove('hidden');
+
+            try {
+                // Build a short context chain of last 4 messages to preserve flow
+                const historyContext = chatHistory.slice(-4).map(h => `${h.role === 'user' ? 'User' : 'Assistant'}: ${h.text}`).join('\n');
+                const fullPrompt = `Previous History:\n${historyContext}\n\nCurrent User Question: ${query}`;
+
+                const responseText = await requestGemini(fullPrompt, AMIT_RESEARCH_BIO);
+                loader.classList.add('hidden');
+                
+                // Push Assistant response
+                appendChatMessage(responseText, 'assistant');
+            } catch (err) {
+                loader.classList.add('hidden');
+                showToast('Failed to reach Gemini. Please check connection.', true);
+            }
+        }
+
+        function appendChatMessage(text, role) {
+            const chatBox = document.getElementById('chat-messages');
+            const msgDiv = document.createElement('div');
+            
+            msgDiv.className = role === 'user' 
+                ? 'flex items-start gap-3 justify-end max-w-[85%] ml-auto' 
+                : 'flex items-start gap-3 max-w-[85%]';
+
+            const formattedText = parseMarkdown(text);
+
+            if (role === 'user') {
+                msgDiv.innerHTML = `
+                    <div class="bg-indigo-600 text-white p-3.5 rounded-l-2xl rounded-tr-2xl shadow-sm">
+                        <p class="text-sm leading-relaxed">${text}</p>
+                    </div>
+                    <div class="w-8 h-8 rounded-lg bg-indigo-100 text-indigo-600 flex items-center justify-center text-xs flex-shrink-0 font-bold">
+                        U
+                    </div>
+                `;
+            } else {
+                msgDiv.innerHTML = `
+                    <div class="w-8 h-8 rounded-lg bg-indigo-600 text-white flex items-center justify-center text-xs flex-shrink-0">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                    </div>
+                    <div class="bg-white p-3.5 rounded-r-2xl rounded-bl-2xl shadow-sm border border-slate-200/60 text-slate-700">
+                        <div class="text-sm leading-relaxed">${formattedText}</div>
+                    </div>
+                `;
+            }
+
+            chatBox.appendChild(msgDiv);
+            chatBox.scrollTop = chatBox.scrollHeight;
+            chatHistory.push({ role, text });
+
+            // Typeset MathJax instantly for equations
+            triggerMathJaxRender();
+        }
+
+        function sendQuickQuery(queryText) {
+            document.getElementById('chat-query').value = queryText;
+            document.getElementById('chat-input-form').dispatchEvent(new Event('submit'));
+        }
+
+        function clearChatHistory() {
+            chatHistory = [];
+            const chatBox = document.getElementById('chat-messages');
+            chatBox.innerHTML = `
+                <div class="flex items-start gap-3 max-w-[85%]">
+                    <div class="w-8 h-8 rounded-lg bg-indigo-600 text-white flex items-center justify-center text-xs flex-shrink-0">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                    </div>
+                    <div class="bg-white p-3.5 rounded-r-2xl rounded-bl-2xl shadow-sm border border-slate-200/60">
+                        <p class="text-slate-600 text-sm leading-relaxed">
+                            Welcome to Amit Singh's Research Lab! I am Amit's virtual assistant. Ask me anything about his Ph.D. research, his published journal papers, water remediation projects, or Sabatier methanation setups.
+                        </p>
+                    </div>
+                </div>
+            `;
+            showToast('Chat history cleared!');
+        }
+
+        /* ----- FEATURE 2: Abstract Optimizer & Enhancer ----- */
+        async function enhanceAbstract() {
+            const draftText = document.getElementById('draft-abstract').value.trim();
+            const goal = document.getElementById('enhancer-type').value;
+            const spin = document.getElementById('enhancer-spin');
+            
+            if (!draftText) {
+                showToast('Please insert a draft abstract to enhance!', true);
+                return;
+            }
+
+            spin.classList.remove('hidden');
+
+            const goalPrompts = {
+                academic: "You are an expert academic editor in Environmental and Bioenergy Science. Rewrite the abstract to maximize professional vocabulary, academic structure, flow, and scientific clarity.",
+                parameters: "You are an expert environmental chemical engineer. Extract all process variables, conditions, and parameters from the abstract. Propose 3 detailed methodology tests or additions.",
+                circular: "Evaluate the abstract from a Circular Economy and Power-to-Gas feasibility perspective. Detail the sustainability index, energetic efficiency, carbon credit potentials, and system circularity."
+            };
+
+            const systemPrompt = `
+You are a peer-reviewer and Senior Editor for high-impact journals like 'Science of the Total Environment' and 'Bioresource Technology'.
+Task: ${goalPrompts[goal]}
+Always respond in clear, beautifully formatted LaTeX notations where applicable. Keep the results concise and highly technical.
+            `;
+
+            try {
+                const results = await requestGemini(draftText, systemPrompt);
+                spin.classList.add('hidden');
+                
+                const outputCard = document.getElementById('enhancer-output-card');
+                const responseDiv = document.getElementById('enhancer-response');
+                
+                outputCard.classList.remove('hidden');
+                responseDiv.innerHTML = parseMarkdown(results);
+                
+                // Trigger LaTeX compiles
+                triggerMathJaxRender();
+                showToast('Draft optimized successfully!');
+            } catch (err) {
+                spin.classList.add('hidden');
+                showToast('Failed to optimize abstract. Try again shortly.', true);
+            }
+        }
+
+        function copyEnhancedOutput() {
+            const responseText = document.getElementById('enhancer-response').innerText;
+            if (!responseText) return;
+            
+            // Clipboard fallback using doc.execCommand to guarantee execution inside framed environments
+            const tempText = document.createElement('textarea');
+            tempText.value = responseText;
+            document.body.appendChild(tempText);
+            tempText.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempText);
+            
+            showToast('Response copied to clipboard!');
+        }
     </script>
 </body>
 </html>
