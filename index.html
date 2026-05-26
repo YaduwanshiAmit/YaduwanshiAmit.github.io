@@ -3,237 +3,1152 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Amit Singh | Environmental Researcher</title>
-    <!-- Tailwind CSS -->
+    <title>Amit Singh | PMRF Ph.D. Scholar | IIT Roorkee</title>
+    <!-- Tailwind CSS for modern responsive styling -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts: Poppins -->
+    <!-- Inter & Playfair Display Google Fonts for crisp academic typography -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <!-- Font Awesome for icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,500&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        'sans': ['Poppins', 'sans-serif'],
-                    },
-                    colors: {
-                        'background': '#f8f9fa',
-                        'surface': '#ffffff',
-                        'primary': '#0d6efd', // A professional blue
-                        'primary-tint': 'rgba(13, 110, 253, 0.1)',
-                        'heading': '#212529',
-                        'text': '#495057',
-                        'muted': '#6c757d',
-                    },
-                },
-            },
-        }
-    </script>
+    
     <style>
-        html {
-            scroll-behavior: smooth;
-        }
         body {
-            background-color: #f8f9fa; /* background */
-            color: #495057; /* text */
+            font-family: 'Inter', sans-serif;
         }
-        .section-heading {
-            display: flex;
-            align-items: center;
-            position: relative;
-            margin: 10px 0 40px;
-            width: 100%;
-            font-size: clamp(26px, 5vw, 32px);
-            white-space: nowrap;
-            color: #212529; /* heading */
-            font-weight: 700;
+        .serif-title {
+            font-family: 'Playfair Display', serif;
         }
-        .section-heading::after {
-            content: "";
+        /* Page animation effects */
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
             display: block;
-            position: relative;
-            top: 1px;
-            width: 300px;
-            height: 1px;
-            margin-left: 20px;
-            background-color: #dee2e6; /* A light gray line */
+            animation: fadeIn 0.4s ease-out;
         }
-        .highlight {
-            color: #0d6efd; /* primary */
-        }
-        .card {
-            background-color: #ffffff; /* surface */
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            border: 1px solid #e9ecef;
-        }
-        .card:hover {
-            transform: translateY(-7px);
-            box-shadow: 0 10px 30px -15px rgba(0,0,0,0.1);
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
     </style>
 </head>
-<body>
+<body class="bg-[#f8fafc] text-slate-800 flex flex-col min-h-screen">
 
-    <!-- Header -->
-    <a href="conferences.html" class="nav-link">Conferences</a>
-    <header class="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md shadow-sm">
-        <nav class="container mx-auto px-6 md:px-10 py-4 flex justify-between items-center">
-            <a href="#" class="text-2xl font-bold highlight">Amit Singh</a>
-            <div class="hidden md:flex items-center space-x-8">
-    <a href="index.html" class="nav-link">Home</a>
-    <a href="research.html" class="nav-link">Research</a>
-    <a href="experience.html" class="nav-link">Experience</a>
-    <a href="conferences.html" class="nav-link">Conferences</a> <!-- Add this line -->
-    <a href="contact.html" class="nav-link">Contact</a>
-</div>
-            <button id="mobile-menu-button" class="md:hidden text-primary">
-                <i class="fas fa-bars text-2xl"></i>
-            </button>
-        </nav>
-         <!-- Mobile Menu -->
-       <div id="mobile-menu" class="hidden md:hidden px-6 pb-4 space-y-4 text-center">
-    <a href="index.html" class="block nav-link">Home</a>
-    <a href="research.html" class="block nav-link">Research</a>
-    <a href="experience.html" class="block nav-link">Experience</a>
-    <a href="conferences.html" class="block nav-link">Conferences</a> <!-- Add this line -->
-    <a href="contact.html" class="block nav-link">Contact</a>
-</div>
-    </header>
-<a href="conferences.html" class="nav-link">Conferences</a>
-    <div class="container mx-auto px-6 md:px-10">
-        <main>
-            <!-- Hero Section -->
-            <section id="hero" class="relative min-h-[80vh] flex flex-col justify-center rounded-lg overflow-hidden my-16">
-                <div class="absolute inset-0">
-                   <img src="algal-bloom.jpg" class="w-full h-full object-cover" alt="Algal Bloom Research Site">
-                    <div class="absolute inset-0 bg-surface/80"></div>
-                </div>
-                <div class="relative z-10 p-8">
-                    <p class="text-lg text-primary font-medium mb-4">Hello, my name is</p>
-                    <h1 class="text-4xl sm:text-6xl md:text-7xl font-bold text-heading">Amit Singh.</h1>
-                    <h2 class="text-3xl sm:text-5xl md:text-6xl font-bold text-muted mt-2">I research sustainable energy solutions.</h2>
-                    <p class="mt-6 max-w-xl text-lg text-text">
-                        I'm a PMRF Doctoral Research Scholar at IIT Roorkee, specializing in GHG mitigation from waterbodies and energy recovery through anaerobic digestion.
-                    </p>
-                    <a href="#research" class="inline-block mt-8 bg-primary text-white text-lg font-medium px-8 py-4 rounded-md hover:bg-opacity-90 shadow-lg transition-all w-fit">
-                        Explore My Research
-                    </a>
-                </div>
-            </section>
-
-            <!-- About Section -->
-            <section id="about" class="py-24 scroll-mt-20">
-                <h2 class="section-heading">About Me</h2>
-                <div class="grid grid-cols-1 md:grid-cols-5 gap-12 items-center">
-                    <div class="md:col-span-3 text-lg">
-                        <p class="mb-4">
-                            I'm Amit, a passionate researcher dedicated to addressing environmental challenges through scientific innovation. My interest in renewable energy began during my undergraduate studies and has since grown into a full-fledged research career focused on the intersection of waste management, bioenergy, and climate change mitigation.
-                        </p>
-                        <p class="mb-4">
-                            My PhD work at the <span class="highlight font-semibold">Indian Institute of Technology, Roorkee</span>, involves a deep dive into the greenhouse gas dynamics of eutrophic lakes. I'm exploring how harnessing waste algae for biogas can not only provide a clean energy source but also restore aquatic ecosystems.
-                        </p>
-                         <p class="mb-4 font-medium text-heading">Core Competencies:</p>
-                        <ul class="grid grid-cols-2 gap-2 text-sm">
-                            <li class="flex items-center"><i class="fas fa-check-circle text-primary mr-2"></i>Anaerobic Digestion</li>
-                            <li class="flex items-center"><i class="fas fa-check-circle text-primary mr-2"></i>GHG Measurement</li>
-                            <li class="flex items-center"><i class="fas fa-check-circle text-primary mr-2"></i>R-Studio</li>
-                            <li class="flex items-center"><i class="fas fa-check-circle text-primary mr-2"></i>Techno-Economic Modeling</li>
-                            <li class="flex items-center"><i class="fas fa-check-circle text-primary mr-2"></i>Life Cycle Assessment</li>
-                            <li class="flex items-center"><i class="fas fa-check-circle text-primary mr-2"></i>AutoCAD</li>
-                        </ul>
-                    </div>
-                    <div class="md:col-span-2">
-                        <div class="relative group w-full max-w-sm mx-auto">
-                            <div class="absolute top-0 left-0 w-full h-full border-2 border-primary rounded-lg transform translate-x-4 translate-y-4 transition-transform group-hover:translate-x-2 group-hover:translate-y-2"></div>
-                           <img class="relative w-full rounded-lg shadow-lg" src="profile.jpeg" alt="Amit Singh">
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Experience Section -->
-            <section id="experience" class="py-24 scroll-mt-20">
-                <h2 class="section-heading">Professional Experience</h2>
-                <div class="max-w-3xl mx-auto">
-                    <div class="relative border-l-2 border-primary/20 pl-10">
-                        <!-- Experience Item 1 -->
-                        <div class="mb-10">
-                            <div class="absolute -left-3.5 mt-1.5 w-6 h-6 bg-primary rounded-full border-4 border-background"></div>
-                            <p class="font-mono text-sm text-muted">Jan 2023 - Present</p>
-                            <h3 class="text-xl font-bold text-heading">Finance Assistant</h3>
-                            <p class="font-medium text-primary">American Water Works Association</p>
-                            <p class="mt-2">Assisting in budget preparation and financial reporting for workshops and conferences, and managing fund flow for association activities.</p>
-                        </div>
-                        <!-- Experience Item 2 -->
-                        <div class="mb-10">
-                            <div class="absolute -left-3.5 mt-1.5 w-6 h-6 bg-primary rounded-full border-4 border-background"></div>
-                            <p class="font-mono text-sm text-muted">April 2024</p>
-                            <h3 class="text-xl font-bold text-heading">Student Coordinator</h3>
-                            <p class="font-medium text-primary">Carbon Footprints Workshop, IIT Roorkee</p>
-                            <p class="mt-2">Coordinated a workshop on carbon footprint estimation, managing logistics, participant communication, and session scheduling.</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Research / Publications Section -->
-            <section id="research" class="py-24 scroll-mt-20">
-                <h2 class="section-heading">Featured Publications</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <!-- Publication 1 -->
-                    <div class="card rounded-lg p-6 flex flex-col">
-                        <div class="flex-grow">
-                            <h3 class="text-lg font-bold text-heading mb-2">Anaerobic digestion as a tool to manage eutrophication</h3>
-                            <p class="text-sm mb-4">Published in <strong class="text-text">Science of The Total Environment</strong>, this paper explores using anaerobic digestion to mitigate greenhouse gas emissions from eutrophic waterbodies.</p>
-                        </div>
-                        <a href="https://doi.org/10.1016/j.scitotenv.2022.160722" target="_blank" class="font-medium text-primary hover:underline">Read More <i class="fas fa-arrow-right ml-1 text-xs"></i></a>
-                    </div>
-                    <!-- Publication 2 -->
-                    <div class="card rounded-lg p-6 flex flex-col">
-                        <div class="flex-grow">
-                            <h3 class="text-lg font-bold text-heading mb-2">Waste Algae for Bioenergy Generation</h3>
-                            <p class="text-sm mb-4">This work in <strong class="text-text">Periodica Polytechnica Chemical Engineering</strong> details the potential of waste algae for bioenergy to reduce eutrophication and GHG emissions.</p>
-                        </div>
-                        <a href="https://doi.org/10.3311/PPch.22005" target="_blank" class="font-medium text-primary hover:underline">Read More <i class="fas fa-arrow-right ml-1 text-xs"></i></a>
-                    </div>
-                    <!-- Publication 3 -->
-                    <div class="card rounded-lg p-6 flex flex-col">
-                        <div class="flex-grow">
-                            <h3 class="text-lg font-bold text-heading mb-2">Economic Evaluation of a Power-to-Biomethane System</h3>
-                            <p class="text-sm mb-4">An economic analysis featured in <strong class="text-text">Energies</strong>, evaluating the viability of a 1 MWel capacity power-to-biomethane system.</p>
-                        </div>
-                        <a href="https://doi.org/10.3390/en16248009" target="_blank" class="font-medium text-primary hover:underline">Read More <i class="fas fa-arrow-right ml-1 text-xs"></i></a>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Contact Section -->
-            <section id="contact" class="py-24 text-center scroll-mt-20">
-                <h2 class="text-3xl font-bold text-heading mb-4">Get In Touch</h2>
-                <p class="max-w-xl mx-auto mb-8 text-lg">
-                    I am always looking for new opportunities to collaborate on innovative research projects. My inbox is always open, whether you have a question, a proposal, or just want to connect.
-                </p>
-                <a href="mailto:amit_s@hre.iitr.ac.in" class="inline-block bg-primary text-white text-lg font-medium px-8 py-4 rounded-md hover:bg-opacity-90 shadow-lg transition-all">
-                    Say Hello
-                </a>
-            </section>
-        </main>
-        
-        <!-- Footer -->
-        <footer class="text-center py-6 border-t">
-            <p class="text-muted text-sm">Designed & Built by Amit Singh </p>
-        </footer>
+    <!-- Top Alert bar: Highlighting PMRF Status -->
+    <div class="bg-gradient-to-r from-blue-700 to-indigo-800 text-white text-xs md:text-sm font-semibold py-2 px-4 text-center">
+        <span class="inline-block bg-blue-500/30 text-blue-200 px-2 py-0.5 rounded text-[10px] uppercase tracking-wide mr-2">PMRF Scholar</span>
+        Recipient of the prestigious Prime Minister's Research Fellowship (PMRF), Government of India
     </div>
 
+    <!-- Navigation Header -->
+    <header class="bg-white/90 backdrop-blur-md sticky top-0 z-50 border-b border-slate-200 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Branding logo -->
+                <div class="flex flex-col">
+                    <a href="javascript:void(0)" onclick="switchTab('home')" class="text-2xl font-bold tracking-tight text-slate-900 flex items-center gap-2">
+                        <span class="bg-indigo-600 text-white p-1.5 rounded-lg text-sm w-8 h-8 flex items-center justify-center">AS</span>
+                        <span>Amit Singh</span>
+                    </a>
+                    <span class="text-[11px] font-semibold tracking-wider text-slate-500 uppercase">IIT Roorkee Scholar</span>
+                </div>
+
+                <!-- Desktop Navigation Menu (Matching Google Sites pages) -->
+                <nav class="hidden xl:flex items-center space-x-1">
+                    <button onclick="switchTab('home')" data-tab-btn="home" class="nav-btn px-3 py-2 text-sm font-medium rounded-md text-indigo-600 bg-indigo-50">Home</button>
+                    <button onclick="switchTab('academic')" data-tab-btn="academic" class="nav-btn px-3 py-2 text-sm font-medium rounded-md text-slate-600 hover:text-indigo-600 hover:bg-slate-50">Academic Details</button>
+                    <button onclick="switchTab('phd')" data-tab-btn="phd" class="nav-btn px-3 py-2 text-sm font-medium rounded-md text-slate-600 hover:text-indigo-600 hover:bg-slate-50">PhD Work</button>
+                    <button onclick="switchTab('publications')" data-tab-btn="publications" class="nav-btn px-3 py-2 text-sm font-medium rounded-md text-slate-600 hover:text-indigo-600 hover:bg-slate-50">Publications</button>
+                    <button onclick="switchTab('conferences')" data-tab-btn="conferences" class="nav-btn px-3 py-2 text-sm font-medium rounded-md text-slate-600 hover:text-indigo-600 hover:bg-slate-50">Conferences</button>
+                    <button onclick="switchTab('teaching')" data-tab-btn="teaching" class="nav-btn px-3 py-2 text-sm font-medium rounded-md text-slate-600 hover:text-indigo-600 hover:bg-slate-50">Teaching & Training</button>
+                    <button onclick="switchTab('extracurricular')" data-tab-btn="extracurricular" class="nav-btn px-3 py-2 text-sm font-medium rounded-md text-slate-600 hover:text-indigo-600 hover:bg-slate-50">Gallery & Extra</button>
+                    <button onclick="switchTab('contact')" data-tab-btn="contact" class="nav-btn px-4 py-2 text-sm font-semibold rounded-lg bg-indigo-600 text-white hover:bg-indigo-700 transition shadow-md">Contact</button>
+                </nav>
+
+                <!-- Mobile Navigation Button -->
+                <div class="xl:hidden">
+                    <button id="mobile-menu-toggle" class="p-2 text-slate-600 hover:text-indigo-600 focus:outline-none">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Nav Menu Drawer -->
+        <div id="mobile-menu" class="hidden xl:hidden bg-white border-t border-slate-200 py-3 px-4 space-y-2 transition-all duration-300">
+            <button onclick="switchTab('home')" class="mobile-nav-btn block w-full text-left px-4 py-2.5 rounded-lg text-indigo-600 bg-indigo-50 font-medium">Home</button>
+            <button onclick="switchTab('academic')" class="mobile-nav-btn block w-full text-left px-4 py-2.5 rounded-lg text-slate-700 hover:bg-slate-50 font-medium">Academic Details</button>
+            <button onclick="switchTab('phd')" class="mobile-nav-btn block w-full text-left px-4 py-2.5 rounded-lg text-slate-700 hover:bg-slate-50 font-medium">PhD Work</button>
+            <button onclick="switchTab('publications')" class="mobile-nav-btn block w-full text-left px-4 py-2.5 rounded-lg text-slate-700 hover:bg-slate-50 font-medium">Publications</button>
+            <button onclick="switchTab('conferences')" class="mobile-nav-btn block w-full text-left px-4 py-2.5 rounded-lg text-slate-700 hover:bg-slate-50 font-medium">Conferences</button>
+            <button onclick="switchTab('teaching')" class="mobile-nav-btn block w-full text-left px-4 py-2.5 rounded-lg text-slate-700 hover:bg-slate-50 font-medium">Teaching & Training</button>
+            <button onclick="switchTab('extracurricular')" class="mobile-nav-btn block w-full text-left px-4 py-2.5 rounded-lg text-slate-700 hover:bg-slate-50 font-medium">Gallery & Extra</button>
+            <button onclick="switchTab('contact')" class="mobile-nav-btn block w-full text-center mt-3 px-4 py-2.5 rounded-lg bg-indigo-600 text-white font-semibold">Contact</button>
+        </div>
+    </header>
+
+    <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 w-full">
+
+        <!-- ================= HOME TAB ================= -->
+        <section id="home" class="tab-content active">
+            <!-- Hero Layout -->
+            <div class="bg-white rounded-3xl border border-slate-200 p-8 md:p-12 shadow-sm mb-12 flex flex-col lg:flex-row gap-10 items-center">
+                <!-- Profile Image & Quick Links -->
+                <div class="w-full lg:w-1/3 flex flex-col items-center">
+                    <div class="relative w-48 h-48 md:w-60 md:h-60 rounded-2xl overflow-hidden shadow-lg border-4 border-white ring-4 ring-indigo-50">
+                        <!-- Custom Placeholder avatar / profile picture -->
+                        <div class="w-full h-full bg-slate-100 flex items-center justify-center text-slate-300">
+                            <i class="fa-solid fa-user-graduate text-8xl"></i>
+                        </div>
+                    </div>
+                    <div class="text-center mt-5">
+                        <h3 class="font-bold text-slate-800 text-lg">Amit Singh</h3>
+                        <p class="text-xs text-slate-500 font-semibold uppercase tracking-wider">PMRF Research Fellow</p>
+                        <p class="text-xs text-indigo-600 mt-1"><i class="fa-solid fa-building-columns mr-1"></i> IIT Roorkee, India</p>
+                    </div>
+
+                    <!-- Fast Contact / Scholar Icons -->
+                    <div class="flex gap-4 mt-6">
+                        <a href="https://scholar.google.com/citations?user=sW2C-aMAAAAJ&hl=en" target="_blank" class="w-10 h-10 rounded-full bg-slate-100 text-slate-700 hover:bg-indigo-600 hover:text-white flex items-center justify-center transition shadow-sm" title="Google Scholar">
+                            <i class="fa-solid fa-graduation-cap"></i>
+                        </a>
+                        <a href="https://github.com/yaduwanshiamit" target="_blank" class="w-10 h-10 rounded-full bg-slate-100 text-slate-700 hover:bg-indigo-600 hover:text-white flex items-center justify-center transition shadow-sm" title="GitHub">
+                            <i class="fa-brands fa-github"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-slate-100 text-slate-700 hover:bg-indigo-600 hover:text-white flex items-center justify-center transition shadow-sm" title="LinkedIn">
+                            <i class="fa-brands fa-linkedin-in"></i>
+                        </a>
+                        <a href="mailto:amit_s@hre.iitr.ac.in" class="w-10 h-10 rounded-full bg-slate-100 text-slate-700 hover:bg-indigo-600 hover:text-white flex items-center justify-center transition shadow-sm" title="Email Amit">
+                            <i class="fa-regular fa-envelope"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Biography & Key Roles -->
+                <div class="w-full lg:w-2/3 space-y-6">
+                    <div>
+                        <span class="bg-indigo-100 text-indigo-700 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Biography</span>
+                        <h1 class="text-3xl md:text-5xl font-extrabold text-slate-900 mt-3 tracking-tight leading-tight">
+                            Amit Singh
+                        </h1>
+                        <p class="text-lg md:text-xl font-medium text-slate-500 mt-2">Prime Minister Research Fellow (PMRF)</p>
+                        <p class="text-md text-slate-600 mt-1">Indian Institute of Technology, Roorkee (Uttarakhand, India)</p>
+                    </div>
+
+                    <p class="text-slate-600 leading-relaxed text-md">
+                        I am currently pursuing my Ph.D. as a <strong>Prime Minister's Research Fellow (PMRF)</strong> in the <strong>Hydro and Renewable Energy Department (HRED)</strong> at the prestigious Indian Institute of Technology, Roorkee. My research investigations focus on environmental engineering with specific targets in circular economy, waste valorization, and carbon emissions reduction.
+                    </p>
+
+                    <p class="text-slate-600 leading-relaxed text-md">
+                        Specifically, my project explores <strong>sustainable biogas upgradation</strong>, <strong>decarbonization of eutrophic water bodies</strong> via nature-based algal bio-harvesting, and <strong>Power-to-Gas (P2G) integrations</strong> to create scalable clean fuel sources while addressing local environmental degradations.
+                    </p>
+
+                    <!-- Core Expertise Cards -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">
+                        <div class="p-4 bg-slate-50 rounded-xl border border-slate-200/60 flex items-start gap-3">
+                            <span class="text-indigo-600 text-xl"><i class="fa-solid fa-cloud-sun"></i></span>
+                            <div>
+                                <h4 class="font-bold text-slate-800 text-sm">GHG Emission Modeling</h4>
+                                <p class="text-xs text-slate-500 mt-0.5">Assessing greenhouse gas pathways and fluxes ($CO_2$, $CH_4$) in lakes and sewage systems.</p>
+                            </div>
+                        </div>
+                        <div class="p-4 bg-slate-50 rounded-xl border border-slate-200/60 flex items-start gap-3">
+                            <span class="text-indigo-600 text-xl"><i class="fa-solid fa-leaf"></i></span>
+                            <div>
+                                <h4 class="font-bold text-slate-800 text-sm">Algal Bio-methanation</h4>
+                                <p class="text-xs text-slate-500 mt-0.5">Transforming nuisance water eutrophic algal blooms into biomethane via Anaerobic Digestion.</p>
+                            </div>
+                        </div>
+                        <div class="p-4 bg-slate-50 rounded-xl border border-slate-200/60 flex items-start gap-3">
+                            <span class="text-indigo-600 text-xl"><i class="fa-solid fa-battery-three-quarters"></i></span>
+                            <div>
+                                <h4 class="font-bold text-slate-800 text-sm">Power-to-Gas (P2G/P2M)</h4>
+                                <p class="text-xs text-slate-500 mt-0.5">Injecting green hydrogen to biologically upgrade raw biogas quality to pipeline-grade methane.</p>
+                            </div>
+                        </div>
+                        <div class="p-4 bg-slate-50 rounded-xl border border-slate-200/60 flex items-start gap-3">
+                            <span class="text-indigo-600 text-xl"><i class="fa-solid fa-water"></i></span>
+                            <div>
+                                <h4 class="font-bold text-slate-800 text-sm">Water Quality Remediation</h4>
+                                <p class="text-xs text-slate-500 mt-0.5">Decarbonizing urban lakes recharged with STP effluent, working on nature-based solutions.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Custom Interactive Visual Schematics (Replaces Google Sites' low-res screenshots) -->
+            <div class="my-16">
+                <div class="text-center max-w-2xl mx-auto mb-10">
+                    <span class="text-xs font-bold text-indigo-600 uppercase tracking-widest bg-indigo-50 px-3 py-1 rounded-full">Key Diagrams</span>
+                    <h2 class="text-2xl md:text-3xl font-extrabold text-slate-900 mt-3">Research Methodologies & Systems</h2>
+                    <p class="text-sm text-slate-500 mt-2">Interactive visual schematics illustrating Amit Singh's ongoing PMRF doctoral focus</p>
+                </div>
+
+                <!-- Tabs for Visual Schematics -->
+                <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm">
+                    <div class="flex border-b border-slate-200 bg-slate-50 flex-wrap">
+                        <button onclick="switchSchematic('ghg')" id="btn-sch-ghg" class="flex-1 py-4 text-center text-xs md:text-sm font-semibold border-b-2 border-indigo-600 text-indigo-600 transition bg-white">
+                            <i class="fa-solid fa-wind mr-1"></i> GHG Pathways
+                        </button>
+                        <button onclick="switchSchematic('chamber')" id="btn-sch-chamber" class="flex-1 py-4 text-center text-xs md:text-sm font-semibold border-b-2 border-transparent text-slate-500 hover:text-slate-800 transition">
+                            <i class="fa-solid fa-vials mr-1"></i> Floating Chamber Design
+                        </button>
+                        <button onclick="switchSchematic('p2m')" id="btn-sch-p2m" class="flex-1 py-4 text-center text-xs md:text-sm font-semibold border-b-2 border-transparent text-slate-500 hover:text-slate-800 transition">
+                            <i class="fa-solid fa-rotate mr-1"></i> P2M Circular System
+                        </button>
+                    </div>
+
+                    <div class="p-6 md:p-10">
+                        <!-- Schematic 1: GHG Flux -->
+                        <div id="sch-ghg" class="schematic-content block">
+                            <div class="flex flex-col lg:flex-row gap-8 items-center">
+                                <div class="w-full lg:w-1/2">
+                                    <h3 class="text-lg font-bold text-slate-900">Greenhouse Gas (GHG) Flux Pathways</h3>
+                                    <p class="text-slate-500 text-xs mt-1">Eutrophic Lakes & Ponds Dynamics</p>
+                                    <p class="text-sm text-slate-600 mt-4 leading-relaxed">
+                                        Eutrophicated water bodies recharged with wastewater treatment plant (STP) effluent trigger immense biological activities. High phosphate and nitrate concentrations promote microalgal blooms. 
+                                    </p>
+                                    <ul class="space-y-2 mt-4 text-xs text-slate-600">
+                                        <li class="flex items-center gap-2">
+                                            <i class="fa-solid fa-circle text-indigo-600 text-[6px]"></i>
+                                            <span><strong>Solar Ingress:</strong> Fuels high photosynthetic rates.</span>
+                                        </li>
+                                        <li class="flex items-center gap-2">
+                                            <i class="fa-solid fa-circle text-indigo-600 text-[6px]"></i>
+                                            <span><strong>Diffusive Fluxes:</strong> Steady surface emission of dissolved $CO_2$ & $CH_4$.</span>
+                                        </li>
+                                        <li class="flex items-center gap-2">
+                                            <i class="fa-solid fa-circle text-indigo-600 text-[6px]"></i>
+                                            <span><strong>Ebullition:</strong> Bubble pathways carrying benthic methanogenesis $CH_4$ direct to the atmosphere.</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="w-full lg:w-1/2 flex justify-center bg-slate-50 p-6 rounded-xl border border-dashed border-slate-300">
+                                    <!-- SVG Illustration: GHG Pathways -->
+                                    <svg viewBox="0 0 500 300" class="w-full max-w-sm h-auto">
+                                        <!-- Water body -->
+                                        <rect x="20" y="150" width="460" height="130" rx="10" fill="#e0f2fe" />
+                                        <line x1="20" y1="150" x2="480" y2="150" stroke="#0284c7" stroke-width="3" stroke-dasharray="4 2" />
+                                        
+                                        <!-- Sun -->
+                                        <circle cx="80" cy="50" r="25" fill="#fef08a" />
+                                        <path d="M80 15 v10 M80 75 v10 M45 50 h10 M105 50 h10" stroke="#facc15" stroke-width="2" />
+                                        
+                                        <!-- Algal Bloom layer -->
+                                        <ellipse cx="250" cy="150" rx="180" ry="8" fill="#4ade80" opacity="0.8"/>
+                                        
+                                        <!-- Diffusive fluxes (Wavy Arrows) -->
+                                        <path d="M 120 140 Q 125 110 120 80" fill="none" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)" />
+                                        <path d="M 220 140 Q 225 110 220 80" fill="none" stroke="#ef4444" stroke-width="2" marker-end="url(#arrow)" />
+                                        <text x="110" y="70" font-family="sans-serif" font-size="10" fill="#475569">Diffusive CO₂</text>
+                                        <text x="210" y="70" font-family="sans-serif" font-size="10" fill="#b91c1c">CH₄ Gas</text>
+
+                                        <!-- Ebullition Bubbles -->
+                                        <circle cx="380" cy="240" r="5" fill="#38bdf8" />
+                                        <circle cx="385" cy="210" r="7" fill="#38bdf8" />
+                                        <circle cx="378" cy="175" r="9" fill="#38bdf8" />
+                                        <!-- Ebullition arrow -->
+                                        <path d="M 380 260 L 380 130" fill="none" stroke="#0284c7" stroke-width="2" stroke-dasharray="2 2" />
+                                        <path d="M 380 130 L 380 90" fill="none" stroke="#0284c7" stroke-width="2" marker-end="url(#arrow)" />
+                                        <text x="350" y="80" font-family="sans-serif" font-size="10" fill="#0369a1" font-weight="bold">Ebullition (CH₄)</text>
+
+                                        <!-- Benthic zone -->
+                                        <rect x="20" y="260" width="460" height="20" fill="#7c2d12" rx="4" />
+                                        <text x="180" y="274" font-family="sans-serif" font-size="10" fill="#fecdd3">Organic Sediment / Methanogenesis</text>
+
+                                        <!-- Definitions for markers -->
+                                        <defs>
+                                            <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                                                <path d="M 0 0 L 10 5 L 0 10 z" fill="#475569" />
+                                            </marker>
+                                        </defs>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Schematic 2: Floating Chamber -->
+                        <div id="sch-chamber" class="schematic-content hidden">
+                            <div class="flex flex-col lg:flex-row gap-8 items-center">
+                                <div class="w-full lg:w-1/2">
+                                    <h3 class="text-lg font-bold text-slate-900">Floating Chamber Design & Flux Estimation</h3>
+                                    <p class="text-slate-500 text-xs mt-1">Direct Field Measuring Setup</p>
+                                    <p class="text-sm text-slate-600 mt-4 leading-relaxed">
+                                        For direct, field-scale evaluation of methane ($CH_4$) and carbon dioxide ($CO_2$) emissions across water-air boundaries, customized floating chambers are engineered.
+                                    </p>
+                                    <p class="text-sm text-slate-600 mt-2 leading-relaxed">
+                                        The chamber is enclosed over the surface with an airtight seal. An embedded internal micro-vent and temperature logger feed gas concentration increases directly via flexible polymer tubes to a portable gas analyzer.
+                                    </p>
+                                    <div class="p-3 bg-indigo-50/50 rounded-lg text-xs mt-3 text-indigo-800">
+                                        <strong>Flux Equation:</strong> $F = \frac{V}{A} \cdot \frac{dC}{dt} \cdot \frac{P \cdot M}{R \cdot T}$ where $dC/dt$ is the gas accumulation slope.
+                                    </div>
+                                </div>
+                                <div class="w-full lg:w-1/2 flex justify-center bg-slate-50 p-6 rounded-xl border border-dashed border-slate-300">
+                                    <!-- SVG Illustration: Floating Chamber -->
+                                    <svg viewBox="0 0 500 300" class="w-full max-w-sm h-auto">
+                                        <!-- Water line -->
+                                        <line x1="20" y1="200" x2="480" y2="200" stroke="#0284c7" stroke-width="2" />
+                                        <rect x="20" y="200" width="460" height="80" fill="#bae6fd" opacity="0.4" />
+
+                                        <!-- Floating Chamber -->
+                                        <!-- Float elements -->
+                                        <rect x="110" y="170" width="30" height="20" rx="5" fill="#ef4444" />
+                                        <rect x="360" y="170" width="30" height="20" rx="5" fill="#ef4444" />
+                                        
+                                        <!-- Main dome/box inverted -->
+                                        <path d="M 140 190 L 140 100 L 360 100 L 360 190" fill="#f1f5f9" stroke="#475569" stroke-width="4" opacity="0.9"/>
+                                        <text x="210" y="145" font-family="sans-serif" font-size="11" fill="#1e293b" font-weight="bold">Enclosed Air Volume</text>
+
+                                        <!-- Tube Outlets -->
+                                        <line x1="250" y1="100" x2="250" y2="70" stroke="#334155" stroke-width="2" />
+                                        <path d="M 250 70 Q 280 40 330 50" fill="none" stroke="#475569" stroke-width="2" stroke-dasharray="3 3"/>
+                                        
+                                        <!-- Analyzer Box -->
+                                        <rect x="330" y="30" width="90" height="50" rx="5" fill="#1e293b" />
+                                        <text x="340" y="48" font-family="sans-serif" font-size="8" fill="#4ade80" font-weight="bold">> Gas Analyzer</text>
+                                        <text x="340" y="62" font-family="sans-serif" font-size="7" fill="#94a3b8">CH₄/CO₂ Conc.</text>
+
+                                        <!-- Gas rising indicators -->
+                                        <path d="M 200 240 L 200 170" stroke="#f43f5e" stroke-width="1.5" marker-end="url(#red-arrow)" />
+                                        <path d="M 300 240 L 300 170" stroke="#f43f5e" stroke-width="1.5" marker-end="url(#red-arrow)" />
+                                        <text x="220" y="230" font-family="sans-serif" font-size="9" fill="#e11d48">Gas Release Flux</text>
+
+                                        <defs>
+                                            <marker id="red-arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                                                <path d="M 0 0 L 10 5 L 0 10 z" fill="#e11d48" />
+                                            </marker>
+                                        </defs>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Schematic 3: P2M Circular -->
+                        <div id="sch-p2m" class="schematic-content hidden">
+                            <div class="flex flex-col lg:flex-row gap-8 items-center">
+                                <div class="w-full lg:w-1/2">
+                                    <h3 class="text-lg font-bold text-slate-900">Circular Power-to-Methane (P2M) Bio-refinery</h3>
+                                    <p class="text-slate-500 text-xs mt-1">Integrated Clean Energy Framework</p>
+                                    <p class="text-sm text-slate-600 mt-4 leading-relaxed">
+                                        This futuristic loop combines wastewater bioremediation with active climate action. Algal blooms are systematically harvested, reducing in situ carbon emissions.
+                                    </p>
+                                    <p class="text-sm text-slate-600 mt-2 leading-relaxed">
+                                        The harvested biomass enters an <strong>Anaerobic Digester (AD)</strong>. The resultant biogas ($60\%\, CH_4$, $40\%\, CO_2$) is upgraded biologically inside the digester using <strong>Renewable Green Hydrogen ($H_2$)</strong> sourced from solar/water electrolysis. This drives Sabatier methanation, yielding pure pipeline-grade biomethane ($95\%\, CH_4$).
+                                    </p>
+                                </div>
+                                <div class="w-full lg:w-1/2 flex justify-center bg-slate-50 p-6 rounded-xl border border-dashed border-slate-300">
+                                    <!-- SVG Illustration: P2M System -->
+                                    <svg viewBox="0 0 500 300" class="w-full max-w-sm h-auto">
+                                        <!-- Step 1: Eutrophic Lake / Harvesting -->
+                                        <rect x="20" y="50" width="100" height="50" rx="5" fill="#86efac" />
+                                        <text x="30" y="72" font-family="sans-serif" font-size="10" fill="#14532d" font-weight="bold">1. Algae Harvest</text>
+                                        <text x="25" y="88" font-family="sans-serif" font-size="8" fill="#15803d">(Eutrophic Lakes)</text>
+
+                                        <!-- Arrow 1 to 2 -->
+                                        <path d="M 120 75 L 170 75" stroke="#475569" stroke-width="2" marker-end="url(#arrow)" />
+
+                                        <!-- Step 2: Anaerobic Digestion -->
+                                        <rect x="170" y="50" width="110" height="70" rx="5" fill="#fbcfe8" />
+                                        <text x="180" y="75" font-family="sans-serif" font-size="9" fill="#831843" font-weight="bold">2. Anaerobic AD</text>
+                                        <text x="180" y="90" font-family="sans-serif" font-size="8" fill="#9d174d">Biological Digester</text>
+                                        <text x="180" y="105" font-family="sans-serif" font-size="7" fill="#be185d">Yields Biogas</text>
+
+                                        <!-- Arrow 2 to 3 -->
+                                        <path d="M 280 85 L 340 85" stroke="#475569" stroke-width="2" marker-end="url(#arrow)" />
+
+                                        <!-- Solar/Wind + H2 input below -->
+                                        <rect x="100" y="190" width="100" height="50" rx="5" fill="#fef08a" />
+                                        <text x="110" y="212" font-family="sans-serif" font-size="9" fill="#713f12" font-weight="bold">Solar PV / Wind</text>
+                                        <text x="110" y="228" font-family="sans-serif" font-size="8" fill="#854d0e">Renewable Energy</text>
+
+                                        <!-- Electrolysis -->
+                                        <rect x="240" y="190" width="100" height="50" rx="5" fill="#93c5fd" />
+                                        <text x="250" y="212" font-family="sans-serif" font-size="9" fill="#1e3a8a" font-weight="bold">Electrolysis (H₂)</text>
+                                        <text x="250" y="228" font-family="sans-serif" font-size="8" fill="#1d4ed8">Green Hydrogen</text>
+
+                                        <!-- Connection Solar to H2 -->
+                                        <path d="M 200 215 L 240 215" stroke="#1d4ed8" stroke-width="2" marker-end="url(#arrow)" />
+                                        <!-- Connection H2 up to AD (Sabatier Upgrade) -->
+                                        <path d="M 290 190 Q 290 140 240 120" fill="none" stroke="#2563eb" stroke-width="2" stroke-dasharray="3 2" marker-end="url(#arrow)"/>
+                                        <text x="280" y="150" font-family="sans-serif" font-size="9" fill="#1d4ed8">Inject H₂</text>
+
+                                        <!-- Step 3: Upgraded Pipeline Methane -->
+                                        <rect x="340" y="50" width="130" height="70" rx="5" fill="#fed7aa" />
+                                        <text x="350" y="75" font-family="sans-serif" font-size="9" fill="#7c2d12" font-weight="bold">3. Bio-methanation</text>
+                                        <text x="350" y="90" font-family="sans-serif" font-size="8" fill="#9a3412">Upgraded gas</text>
+                                        <text x="350" y="105" font-family="sans-serif" font-size="9" fill="#c2410c" font-weight="bold">CH₄ > 95%</text>
+
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ================= ACADEMIC DETAILS TAB ================= -->
+        <section id="academic" class="tab-content">
+            <div class="max-w-4xl mx-auto space-y-12">
+                <div class="text-center">
+                    <span class="text-xs font-bold text-indigo-600 uppercase tracking-widest bg-indigo-50 px-3 py-1 rounded-full">Background</span>
+                    <h2 class="text-3xl font-extrabold text-slate-900 mt-3">Academic Timeline</h2>
+                    <p class="text-sm text-slate-500 mt-2">Comprehensive background profile, qualifications, and milestones</p>
+                </div>
+
+                <!-- Education timeline list -->
+                <div class="relative border-l-2 border-slate-200 ml-4 md:ml-32 space-y-10">
+                    <!-- Ph.D. Item -->
+                    <div class="relative pl-8 md:pl-10">
+                        <!-- Left floating year tag -->
+                        <span class="hidden md:inline-block absolute right-full mr-10 top-0.5 text-right font-bold text-slate-800 text-sm">
+                            2020 - Present
+                        </span>
+                        <!-- Circle icon on line -->
+                        <span class="absolute left-0 top-1.5 -translate-x-1/2 w-4 h-4 rounded-full bg-indigo-600 ring-4 ring-indigo-100 flex items-center justify-center"></span>
+                        
+                        <div>
+                            <span class="inline-block md:hidden text-xs font-bold text-indigo-600 mb-1">2020 - Present</span>
+                            <span class="bg-indigo-50 text-indigo-700 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider mb-2 inline-block">Doctoral Degree</span>
+                            <h3 class="text-xl font-bold text-slate-900">Ph.D. in Hydro and Renewable Energy (PMRF)</h3>
+                            <p class="text-sm font-semibold text-slate-600 mt-1">Indian Institute of Technology, Roorkee</p>
+                            <p class="text-xs text-slate-400 mt-0.5">Uttarakhand, India</p>
+                            
+                            <!-- Highlight achievements -->
+                            <div class="mt-4 p-4 bg-white rounded-xl border border-slate-200 text-sm text-slate-600 space-y-2">
+                                <p><strong>Research Focus:</strong> Assessing Greenhouse Gas emissions from municipal-influenced urban water bodies, integrating bio-recovery systems, anaerobic digestion, and circular economy.</p>
+                                <p><strong>Fellowship:</strong> Prestigious **Prime Minister's Research Fellowship (PMRF)**, acknowledging academic excellence and high research potential.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- M.Tech Item -->
+                    <div class="relative pl-8 md:pl-10">
+                        <!-- Left floating year -->
+                        <span class="hidden md:inline-block absolute right-full mr-10 top-0.5 text-right font-semibold text-slate-500 text-sm">
+                            M.Tech Degree
+                        </span>
+                        <!-- Circle -->
+                        <span class="absolute left-0 top-1.5 -translate-x-1/2 w-4 h-4 rounded-full bg-slate-300 ring-4 ring-slate-100 flex items-center justify-center"></span>
+                        
+                        <div>
+                            <span class="bg-slate-100 text-slate-700 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider mb-2 inline-block">Postgraduate</span>
+                            <h3 class="text-xl font-bold text-slate-900">M.Tech in Environmental Engineering</h3>
+                            <p class="text-sm font-semibold text-slate-600 mt-1">National Institute of Technology (NIT), Kurukshetra</p>
+                            <p class="text-xs text-slate-400 mt-0.5">Haryana, India</p>
+                            <p class="text-sm text-slate-500 mt-2">Deep dive into water pollution control, waste-water analysis, sewage treatment design, and air pollution modelling.</p>
+                        </div>
+                    </div>
+
+                    <!-- B.Tech Item -->
+                    <div class="relative pl-8 md:pl-10">
+                        <!-- Left floating year -->
+                        <span class="hidden md:inline-block absolute right-full mr-10 top-0.5 text-right font-semibold text-slate-500 text-sm">
+                            B.Tech Degree
+                        </span>
+                        <!-- Circle -->
+                        <span class="absolute left-0 top-1.5 -translate-x-1/2 w-4 h-4 rounded-full bg-slate-300 ring-4 ring-slate-100 flex items-center justify-center"></span>
+                        
+                        <div>
+                            <span class="bg-slate-100 text-slate-700 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider mb-2 inline-block">Undergraduate</span>
+                            <h3 class="text-xl font-bold text-slate-900">B.Tech in Civil Engineering</h3>
+                            <p class="text-sm font-semibold text-slate-600 mt-1">Dr. A.P.J. Abdul Kalam Technical University (AKTU)</p>
+                            <p class="text-xs text-slate-400 mt-0.5">Lucknow, Uttar Pradesh, India</p>
+                            <p class="text-sm text-slate-500 mt-2">Focus on structural hydraulics, water resource engineering, geo-technical modeling, and environmental impact assessments.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- National Qualifications Card -->
+                <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm mt-8">
+                    <h3 class="text-lg font-bold text-slate-900 mb-4 flex items-center gap-2">
+                        <i class="fa-solid fa-award text-indigo-600"></i> National Examinations & Certifications
+                    </h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="flex items-start gap-3 p-3 bg-slate-50 rounded-lg">
+                            <span class="text-emerald-500 mt-0.5"><i class="fa-solid fa-circle-check"></i></span>
+                            <div>
+                                <h4 class="font-bold text-slate-800 text-sm">PMRF Fellowship (MoE)</h4>
+                                <p class="text-xs text-slate-500 mt-0.5">Recognized in the national competitive screening with an elite research grant from the Ministry of Education.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3 p-3 bg-slate-50 rounded-lg">
+                            <span class="text-emerald-500 mt-0.5"><i class="fa-solid fa-circle-check"></i></span>
+                            <div>
+                                <h4 class="font-bold text-slate-800 text-sm">GATE Qualified</h4>
+                                <p class="text-xs text-slate-500 mt-0.5">Qualified the Graduate Aptitude Test in Engineering, highlighting sound technical and logical foundations in Civil & Environmental domains.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ================= PhD WORK TAB ================= -->
+        <section id="phd" class="tab-content">
+            <div class="max-w-4xl mx-auto space-y-12">
+                <div class="text-center">
+                    <span class="text-xs font-bold text-indigo-600 uppercase tracking-widest bg-indigo-50 px-3 py-1 rounded-full">Doctoral Thesis Focus</span>
+                    <h2 class="text-3xl font-extrabold text-slate-900 mt-3">Ph.D. Research & Supervisor</h2>
+                    <p class="text-sm text-slate-500 mt-2">Details of doctoral studies, technical projects, and mentorship</p>
+                </div>
+
+                <!-- Thesis title banner -->
+                <div class="bg-slate-900 text-white p-8 rounded-3xl relative overflow-hidden shadow-lg">
+                    <div class="absolute inset-0 bg-gradient-to-r from-indigo-900 to-indigo-950 opacity-90"></div>
+                    <div class="relative z-10 space-y-3">
+                        <span class="text-indigo-400 text-xs font-bold uppercase tracking-wider">Approved Research Theme</span>
+                        <h3 class="text-xl md:text-2xl font-bold leading-snug">
+                            "Waste algae to biogas for clean energy and environment: Techno-environ-economic prospects"
+                        </h3>
+                        <p class="text-xs text-slate-300">
+                            Hydro and Renewable Energy Department, IIT Roorkee
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Thesis Chapters / Sections -->
+                <div class="space-y-6">
+                    <h3 class="text-lg font-bold text-slate-900">Principal Research Objectives</h3>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="bg-white rounded-xl p-5 border border-slate-200 shadow-sm space-y-3">
+                            <div class="w-10 h-10 rounded-lg bg-indigo-50 text-indigo-600 flex items-center justify-center font-bold">01</div>
+                            <h4 class="font-bold text-slate-800 text-sm">GHG Assessments in Eutrophic Systems</h4>
+                            <p class="text-xs text-slate-500 leading-relaxed">
+                                Conducting intensive seasonal monitoring of diffusive and ebullitive methane ($CH_4$) and carbon dioxide ($CO_2$) emissions across diverse water networks (like the Hauz Khas Pond, South Delhi) influenced by secondary and tertiary treated STP domestic effluent discharges.
+                            </p>
+                        </div>
+                        <div class="bg-white rounded-xl p-5 border border-slate-200 shadow-sm space-y-3">
+                            <div class="w-10 h-10 rounded-lg bg-indigo-50 text-indigo-600 flex items-center justify-center font-bold">02</div>
+                            <h4 class="font-bold text-slate-800 text-sm">Algal Harvesting for Decarbonization</h4>
+                            <p class="text-xs text-slate-500 leading-relaxed">
+                                Quantifying hyper-eutrophicated standing biomass volumes and deploying mechanical/nature-based Harvesting Solutions to strip nutrients and carbon content, lowering in-situ environmental footprint and gas emissions.
+                            </p>
+                        </div>
+                        <div class="bg-white rounded-xl p-5 border border-slate-200 shadow-sm space-y-3">
+                            <div class="w-10 h-10 rounded-lg bg-indigo-50 text-indigo-600 flex items-center justify-center font-bold">03</div>
+                            <h4 class="font-bold text-slate-800 text-sm">Optimizing Biogas Output (Anaerobic Digestion)</h4>
+                            <p class="text-xs text-slate-500 leading-relaxed">
+                                Executing Biochemical Methane Potential (BMP) test suites on harvested algal species to discover competitive methane yields, identifying operational parameters like volatile solids, organic loading rates, and temperatures.
+                            </p>
+                        </div>
+                        <div class="bg-white rounded-xl p-5 border border-slate-200 shadow-sm space-y-3">
+                            <div class="w-10 h-10 rounded-lg bg-indigo-50 text-indigo-600 flex items-center justify-center font-bold">04</div>
+                            <h4 class="font-bold text-slate-800 text-sm">Power-to-Gas (P2M) Integration</h4>
+                            <p class="text-xs text-slate-500 leading-relaxed">
+                                Simulating in-situ upgrading of AD biogas using externally produced green hydrogen, converting toxic/excess $CO_2$ biologically into pipeline quality $CH_4$ gas (>95%), realizing circular energy recovery loops.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Supervisors Grid -->
+                <div class="space-y-6 pt-6">
+                    <h3 class="text-lg font-bold text-slate-900">Mentorship & Collaborations</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <!-- Supervisor 1 -->
+                        <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-full bg-slate-100 flex items-center justify-center text-slate-400 text-lg flex-shrink-0">
+                                <i class="fa-solid fa-graduation-cap"></i>
+                            </div>
+                            <div>
+                                <span class="bg-emerald-50 text-emerald-700 text-[10px] font-bold px-2 py-0.5 rounded uppercase tracking-wider">Research Supervisor</span>
+                                <h4 class="font-bold text-slate-900 text-md mt-1">Prof. Sanjeev Kumar Prajapati</h4>
+                                <p class="text-xs text-slate-500 mt-0.5">Professor, Department of Hydro and Renewable Energy (HRED)</p>
+                                <p class="text-xs text-indigo-600 font-semibold mt-1">IIT Roorkee, India</p>
+                                <p class="text-xs text-slate-500 mt-2 leading-relaxed">Head of Environment and Biofuel Research Laboratory. Expert in Wastewater Treatment, Algae Biorefinery, and Biogas Engineering.</p>
+                            </div>
+                        </div>
+
+                        <!-- Collaborator 2 -->
+                        <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-full bg-slate-100 flex items-center justify-center text-slate-400 text-lg flex-shrink-0">
+                                <i class="fa-solid fa-earth-europe"></i>
+                            </div>
+                            <div>
+                                <span class="bg-indigo-50 text-indigo-700 text-[10px] font-bold px-2 py-0.5 rounded uppercase tracking-wider">Research Co-Advisor / Collaborator</span>
+                                <h4 class="font-bold text-slate-900 text-md mt-1">Prof. Attila Bai</h4>
+                                <p class="text-xs text-slate-500 mt-0.5">Professor, Faculty of Economics and Business</p>
+                                <p class="text-xs text-indigo-600 font-semibold mt-1">University of Debrecen, Hungary</p>
+                                <p class="text-xs text-slate-500 mt-2 leading-relaxed">Leading expert in Business Economics, Bioenergy Valuations, and circular economic prospects of sustainable biorefinery integrations.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ================= PUBLICATIONS TAB ================= -->
+        <section id="publications" class="tab-content">
+            <div class="max-w-4xl mx-auto space-y-12">
+                <div class="text-center">
+                    <span class="text-xs font-bold text-indigo-600 uppercase tracking-widest bg-indigo-50 px-3 py-1 rounded-full">Academic Output</span>
+                    <h2 class="text-3xl font-extrabold text-slate-900 mt-3">Peer-Reviewed Publications</h2>
+                    <p class="text-sm text-slate-500 mt-2">Highly-ranked high impact factor journal articles and reviews</p>
+                </div>
+
+                <!-- Google Scholar quick stats -->
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                    <div class="bg-white p-5 rounded-xl border border-slate-200 text-center shadow-sm">
+                        <span class="text-3xl font-extrabold text-indigo-600 block">40+</span>
+                        <span class="text-xs font-medium text-slate-500 mt-1 uppercase tracking-wider">Total Citations</span>
+                    </div>
+                    <div class="bg-white p-5 rounded-xl border border-slate-200 text-center shadow-sm">
+                        <span class="text-3xl font-extrabold text-indigo-600 block">Q1 / Q2</span>
+                        <span class="text-xs font-medium text-slate-500 mt-1 uppercase tracking-wider">Journal Rankings</span>
+                    </div>
+                    <div class="bg-white p-5 rounded-xl border border-slate-200 text-center shadow-sm col-span-2 md:col-span-1">
+                        <a href="https://scholar.google.com/citations?user=sW2C-aMAAAAJ&hl=en" target="_blank" class="text-sm font-semibold text-indigo-600 hover:text-indigo-800 flex items-center justify-center gap-1 h-full py-2">
+                            <span>Open Scholar Profile</span> <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Publications List -->
+                <div class="space-y-6">
+
+                    <!-- Paper 1 -->
+                    <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:border-indigo-200 transition relative overflow-hidden">
+                        <div class="absolute left-0 top-0 bottom-0 w-1.5 bg-indigo-600"></div>
+                        <div class="flex flex-wrap items-center gap-2 mb-2">
+                            <span class="bg-indigo-100 text-indigo-700 text-[10px] font-bold px-2 py-0.5 rounded uppercase">Highly Cited</span>
+                            <span class="bg-emerald-100 text-emerald-700 text-[10px] font-bold px-2 py-0.5 rounded uppercase">Q1 Journal</span>
+                            <span class="text-xs text-slate-400 ml-auto"><i class="fa-regular fa-calendar-days mr-1"></i> 2023</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-900 leading-snug">
+                            Anaerobic digestion as a tool to manage eutrophication and associated greenhouse gas emission
+                        </h3>
+                        <p class="text-xs text-slate-500 mt-1">
+                            <strong>A. Singh</strong>, M.S. Rana, H. Tiwari, M. Kumar, S. Saxena, V. Anand, S.K. Prajapati.
+                        </p>
+                        <p class="text-xs text-slate-500 mt-0.5 italic">
+                            Science of the Total Environment, Volume 861, 160722
+                        </p>
+                        <p class="text-sm text-slate-600 mt-3 line-clamp-2 leading-relaxed">
+                            This comprehensive review article explores how eutrophication acts as a driving source of volatile greenhouse gas fluxes and details how harnessing algal blooms as raw feedstocks for anaerobic digestion can successfully manage nutrient and climate issues.
+                        </p>
+                        
+                        <!-- Link and citation -->
+                        <div class="flex items-center justify-between border-t border-slate-100 mt-4 pt-3 text-xs">
+                            <span class="text-slate-500 font-medium"><i class="fa-solid fa-quote-right text-indigo-500 mr-1"></i> Citations: <strong>32</strong></span>
+                            <a href="https://doi.org/10.1016/j.scitotenv.2022.160722" target="_blank" class="text-indigo-600 hover:text-indigo-800 font-semibold flex items-center gap-1">
+                                <span>Publisher DOI</span> <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Paper 2 -->
+                    <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:border-indigo-200 transition relative overflow-hidden">
+                        <div class="absolute left-0 top-0 bottom-0 w-1.5 bg-indigo-600"></div>
+                        <div class="flex flex-wrap items-center gap-2 mb-2">
+                            <span class="bg-indigo-100 text-indigo-700 text-[10px] font-bold px-2 py-0.5 rounded uppercase">Pyrolysis</span>
+                            <span class="bg-emerald-100 text-emerald-700 text-[10px] font-bold px-2 py-0.5 rounded uppercase">Q1 Review</span>
+                            <span class="text-xs text-slate-400 ml-auto"><i class="fa-regular fa-calendar-days mr-1"></i> 2026</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-900 leading-snug">
+                            Microwave-assisted pyrolysis of biomass for bioenergy production
+                        </h3>
+                        <p class="text-xs text-slate-500 mt-1">
+                            P. Bisht, A. Mishra, V. Anand, <strong>A. Singh</strong>, H. Tiwari, S. Shobana, G. Kumar, et al.
+                        </p>
+                        <p class="text-xs text-slate-500 mt-0.5 italic">
+                            Renewable and Sustainable Energy Reviews, Volume 226, 116344
+                        </p>
+                        <p class="text-sm text-slate-600 mt-3 line-clamp-2 leading-relaxed">
+                            A highly analytical evaluation evaluating the thermal, thermodynamic, and process parameters of microwave-assisted fast pyrolysis systems to unlock sustainable bio-oils, biochars, and clean gases.
+                        </p>
+                        
+                        <!-- Link and citation -->
+                        <div class="flex items-center justify-between border-t border-slate-100 mt-4 pt-3 text-xs">
+                            <span class="text-slate-500 font-medium"><i class="fa-solid fa-quote-right text-indigo-500 mr-1"></i> Citations: <strong>11</strong></span>
+                            <a href="https://doi.org/10.1016/j.rser.2025.116344" target="_blank" class="text-indigo-600 hover:text-indigo-800 font-semibold flex items-center gap-1">
+                                <span>Publisher DOI</span> <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Paper 3 -->
+                    <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:border-indigo-200 transition relative overflow-hidden">
+                        <div class="absolute left-0 top-0 bottom-0 w-1.5 bg-indigo-600"></div>
+                        <div class="flex flex-wrap items-center gap-2 mb-2">
+                            <span class="bg-indigo-100 text-indigo-700 text-[10px] font-bold px-2 py-0.5 rounded uppercase">Bio-methane</span>
+                            <span class="bg-slate-100 text-slate-700 text-[10px] font-bold px-2 py-0.5 rounded uppercase">Peer Reviewed</span>
+                            <span class="text-xs text-slate-400 ml-auto"><i class="fa-regular fa-calendar-days mr-1"></i> 2023</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-900 leading-snug">
+                            Waste algae for bioenergy generation to mitigate eutrophication and greenhouse emissions in water bodies
+                        </h3>
+                        <p class="text-xs text-slate-500 mt-1">
+                            <strong>A. Singh</strong>, V. Anand, A. Bai, Z. Gabnai, S.K. Prajapati.
+                        </p>
+                        <p class="text-xs text-slate-500 mt-0.5 italic">
+                            Periodica Polytechnica Chemical Engineering, 67(3), 355–366
+                        </p>
+                        <p class="text-sm text-slate-600 mt-3 line-clamp-2 leading-relaxed">
+                            Discusses the biochemical profiles of various freshwater algae species harvested from urban effluent zones, demonstrating anaerobic digestibility potential and carbon reduction metrics.
+                        </p>
+                        
+                        <!-- Link and citation -->
+                        <div class="flex items-center justify-between border-t border-slate-100 mt-4 pt-3 text-xs">
+                            <span class="text-slate-500 font-medium"><i class="fa-solid fa-quote-right text-indigo-500 mr-1"></i> Citations: <strong>4</strong></span>
+                            <a href="https://doi.org/10.3311/PPch.22005" target="_blank" class="text-indigo-600 hover:text-indigo-800 font-semibold flex items-center gap-1">
+                                <span>Publisher DOI</span> <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Paper 4 -->
+                    <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:border-indigo-200 transition relative overflow-hidden">
+                        <div class="absolute left-0 top-0 bottom-0 w-1.5 bg-indigo-600"></div>
+                        <div class="flex flex-wrap items-center gap-2 mb-2">
+                            <span class="bg-indigo-100 text-indigo-700 text-[10px] font-bold px-2 py-0.5 rounded uppercase">Spatiotemporal Analysis</span>
+                            <span class="bg-slate-100 text-slate-700 text-[10px] font-bold px-2 py-0.5 rounded uppercase">Peer Reviewed</span>
+                            <span class="text-xs text-slate-400 ml-auto"><i class="fa-regular fa-calendar-days mr-1"></i> 2025</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-900 leading-snug">
+                            Exploring spatiotemporal water quality change of eutrophicated urban lake
+                        </h3>
+                        <p class="text-xs text-slate-500 mt-1">
+                            <strong>A. Singh</strong>, V. Anand, S.K. Prajapati, A. Bai.
+                        </p>
+                        <p class="text-xs text-slate-500 mt-0.5 italic">
+                            Sustainable Chemistry One World, 100126
+                        </p>
+                        <p class="text-sm text-slate-600 mt-3 line-clamp-2 leading-relaxed">
+                            This paper examines complex spatiotemporal variations in nutrients, temperature, and dissolved gases in sewage-fed lakes, identifying critical mitigation time-frames.
+                        </p>
+                        
+                        <!-- Link and citation -->
+                        <div class="flex items-center justify-between border-t border-slate-100 mt-4 pt-3 text-xs">
+                            <span class="text-slate-500 font-medium"><i class="fa-solid fa-quote-right text-indigo-500 mr-1"></i> Citations: <strong>1</strong></span>
+                            <a href="https://doi.org/10.1016/j.sbchem.2025.100126" target="_blank" class="text-indigo-600 hover:text-indigo-800 font-semibold flex items-center gap-1">
+                                <span>Publisher DOI</span> <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ================= CONFERENCES TAB ================= -->
+        <section id="conferences" class="tab-content">
+            <div class="max-w-4xl mx-auto space-y-12">
+                <div class="text-center">
+                    <span class="text-xs font-bold text-indigo-600 uppercase tracking-widest bg-indigo-50 px-3 py-1 rounded-full">Dissemination</span>
+                    <h2 class="text-3xl font-extrabold text-slate-900 mt-3">Conference Contributions</h2>
+                    <p class="text-sm text-slate-500 mt-2">Invited talks, international presentations, and poster releases</p>
+                </div>
+
+                <div class="space-y-6">
+
+                    <!-- Conference 1 -->
+                    <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex flex-col md:flex-row gap-6">
+                        <div class="w-full md:w-1/4">
+                            <span class="bg-indigo-100 text-indigo-700 text-[10px] font-bold px-2 py-1 rounded block text-center uppercase tracking-wide">EGU 2026</span>
+                            <span class="text-slate-400 text-xs text-center block mt-2 font-medium"><i class="fa-solid fa-location-dot mr-1"></i> Vienna, Austria</span>
+                            <span class="text-slate-400 text-xs text-center block font-medium"><i class="fa-regular fa-calendar-days mr-1"></i> May 3–8, 2026</span>
+                        </div>
+                        <div class="w-full md:w-3/4 space-y-2">
+                            <span class="text-indigo-600 font-semibold text-xs tracking-wider uppercase">Oral / Poster Presentation</span>
+                            <h3 class="text-lg font-bold text-slate-900">
+                                Blue–green infrastructure of Urban Ponds: nature-based algal harvesting for greenhouse gas mitigation and bioenergy recovery
+                            </h3>
+                            <p class="text-xs text-slate-500">
+                                <strong>Amit Singh</strong>, Sanjeev Kumar Prajapati, Attila Bai.
+                            </p>
+                            <p class="text-sm text-slate-600 leading-relaxed">
+                                Evaluated the Hauz Khas Pond (15 acres, South Delhi) receiving secondary-treated STP effluent. Outlined that biomass harvesting yields competitive biomethane potentials under anaerobic digestion.
+                            </p>
+                            <p class="text-xs text-indigo-600 font-semibold"><i class="fa-solid fa-link mr-1"></i> Abstract ID: EGU26-16190</p>
+                        </div>
+                    </div>
+
+                    <!-- Conference 2 -->
+                    <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex flex-col md:flex-row gap-6">
+                        <div class="w-full md:w-1/4">
+                            <span class="bg-indigo-100 text-indigo-700 text-[10px] font-bold px-2 py-1 rounded block text-center uppercase tracking-wide">EGU 2024</span>
+                            <span class="text-slate-400 text-xs text-center block mt-2 font-medium"><i class="fa-solid fa-location-dot mr-1"></i> Vienna, Austria</span>
+                            <span class="text-slate-400 text-xs text-center block font-medium"><i class="fa-regular fa-calendar-days mr-1"></i> April 14–19, 2024</span>
+                        </div>
+                        <div class="w-full md:w-3/4 space-y-2">
+                            <span class="text-indigo-600 font-semibold text-xs tracking-wider uppercase">Poster Presentation</span>
+                            <h3 class="text-lg font-bold text-slate-900">
+                                Potential of greenhouse gas emissions from urban lakes recharged with STP effluent
+                            </h3>
+                            <p class="text-xs text-slate-500">
+                                <strong>Amit Singh</strong>, Sanjeev Kumar Prajapati, Attila Bai.
+                            </p>
+                            <p class="text-sm text-slate-600 leading-relaxed">
+                                Highlighted high nutrient loading parameters forcing massive carbon dioxide and methanogenic release, showcasing mitigation prospects via biological digestion paths.
+                            </p>
+                            <p class="text-xs text-indigo-600 font-semibold"><i class="fa-solid fa-link mr-1"></i> DOI: 10.5194/egusphere-egu24-14427</p>
+                        </div>
+                    </div>
+
+                    <!-- Conference 3 -->
+                    <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex flex-col md:flex-row gap-6">
+                        <div class="w-full md:w-1/4">
+                            <span class="bg-indigo-100 text-indigo-700 text-[10px] font-bold px-2 py-1 rounded block text-center uppercase tracking-wide">CBIP R&D</span>
+                            <span class="text-slate-400 text-xs text-center block mt-2 font-medium"><i class="fa-solid fa-location-dot mr-1"></i> New Delhi, India</span>
+                            <span class="text-slate-400 text-xs text-center block font-medium"><i class="fa-regular fa-calendar-days mr-1"></i> February 2024</span>
+                        </div>
+                        <div class="w-full md:w-3/4 space-y-2">
+                            <span class="text-indigo-600 font-semibold text-xs tracking-wider uppercase">Invited Technical Presentation</span>
+                            <h3 class="text-lg font-bold text-slate-900">
+                                Water quality assessment and management of urban lakes
+                            </h3>
+                            <p class="text-xs text-slate-500">
+                                <strong>Amit Singh</strong> (PMRF Scholar), Prof. Sanjeev K. Prajapati, Prof. Attila Bai.
+                            </p>
+                            <p class="text-sm text-slate-600 leading-relaxed">
+                                Presented at the 8th International R&D conference on Global Trends in Water Resources, Power & RE Sectors. Focused on lake remediation using green engineered solutions.
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ================= TEACHING & TRAINING TAB ================= -->
+        <section id="teaching" class="tab-content">
+            <div class="max-w-4xl mx-auto space-y-12">
+                <div class="text-center">
+                    <span class="text-xs font-bold text-indigo-600 uppercase tracking-widest bg-indigo-50 px-3 py-1 rounded-full">Contributions & Trainings</span>
+                    <h2 class="text-3xl font-extrabold text-slate-900 mt-3">Teaching Engagements & Workshops</h2>
+                    <p class="text-sm text-slate-500 mt-2">Disseminating knowledge via academic teaching assistanceships and professional training</p>
+                </div>
+
+                <!-- Teaching Assistanceships -->
+                <div class="space-y-6">
+                    <h3 class="text-xl font-bold text-slate-900 flex items-center gap-2">
+                        <i class="fa-solid fa-person-chalkboard text-indigo-600"></i> Teaching Engagements (IIT Roorkee)
+                    </h3>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-3">
+                            <span class="text-xs font-bold bg-indigo-50 text-indigo-700 px-2 py-1 rounded uppercase">Course TA</span>
+                            <h4 class="font-bold text-slate-900 text-md">Renewable Energy Systems Laboratory</h4>
+                            <p class="text-xs text-slate-500">Hydro and Renewable Energy Department</p>
+                            <p class="text-sm text-slate-600 leading-relaxed">
+                                Assisting postgraduate (M.Tech) and doctoral candidates with biological digester assemblies, algal culture mechanics, gas measurement calibrations, and volatile solid evaluations.
+                            </p>
+                        </div>
+                        <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-3">
+                            <span class="text-xs font-bold bg-indigo-50 text-indigo-700 px-2 py-1 rounded uppercase">Course TA</span>
+                            <h4 class="font-bold text-slate-900 text-md">Environmental Quality & Wastewater Engineering</h4>
+                            <p class="text-xs text-slate-500">HRED Core Module</p>
+                            <p class="text-sm text-slate-600 leading-relaxed">
+                                Led evaluation processes, lab-practical setups for assessment of BOD, COD, nitrates, dissolved organic carbon, phosphates, and bacterial counts in wastewater samples.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Trainings & Professional Seminars -->
+                <div class="space-y-6 pt-6">
+                    <h3 class="text-xl font-bold text-slate-900 flex items-center gap-2">
+                        <i class="fa-solid fa-graduation-cap text-indigo-600"></i> Professional Training & FDPs
+                    </h3>
+                    
+                    <div class="border-l-2 border-indigo-200 space-y-6 ml-2 pl-4">
+                        <div class="space-y-1">
+                            <span class="text-xs font-bold text-slate-400">December 2023</span>
+                            <h4 class="font-bold text-slate-900 text-md">International Workshop on Advanced Biorefinery Systems</h4>
+                            <p class="text-xs text-indigo-600">IIT Delhi, India</p>
+                            <p class="text-sm text-slate-600">Completed advanced research module on metabolic modeling of anaerobic systems and pyrolysis pathways of diverse bio-solids.</p>
+                        </div>
+                        <div class="space-y-1">
+                            <span class="text-xs font-bold text-slate-400">August 2022</span>
+                            <h4 class="font-bold text-slate-900 text-md">FDP on Circular Economy and Green Hydrogen Integrations</h4>
+                            <p class="text-xs text-indigo-600">Ministry of New and Renewable Energy (MNRE), Govt. of India</p>
+                            <p class="text-sm text-slate-600">Gained exposure to P2G (Power-to-Gas) parameters, high-pressure hydrogen setups, and gas upgradation reactor engineering.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ================= EXTRACURRICULAR & GALLERY ================= -->
+        <section id="extracurricular" class="tab-content">
+            <div class="max-w-4xl mx-auto space-y-12">
+                <div class="text-center">
+                    <span class="text-xs font-bold text-indigo-600 uppercase tracking-widest bg-indigo-50 px-3 py-1 rounded-full">Beyond Research</span>
+                    <h2 class="text-3xl font-extrabold text-slate-900 mt-3">Extracurriculars & Gallery</h2>
+                    <p class="text-sm text-slate-500 mt-2">Active roles, community, field monitoring snapshots, and achievements</p>
+                </div>
+
+                <!-- Extracurricular Roles -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex items-start gap-4">
+                        <div class="w-10 h-10 rounded-lg bg-indigo-50 text-indigo-600 flex items-center justify-center flex-shrink-0 text-lg">
+                            <i class="fa-solid fa-people-group"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-slate-900 text-md">Lab Coordination Committee</h4>
+                            <p class="text-xs text-indigo-600 mt-0.5">Member Representative</p>
+                            <p class="text-xs text-slate-500 mt-2 leading-relaxed">Managing gas analyzer scheduling, procurement approvals, safety protocols, and general environmental safety guidelines at the EBR Laboratory, IIT Roorkee.</p>
+                        </div>
+                    </div>
+                    <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex items-start gap-4">
+                        <div class="w-10 h-10 rounded-lg bg-indigo-50 text-indigo-600 flex items-center justify-center flex-shrink-0 text-lg">
+                            <i class="fa-solid fa-handshake-angle"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-slate-900 text-md">PMRF Local Community Outreach</h4>
+                            <p class="text-xs text-indigo-600 mt-0.5">Active Volunteer</p>
+                            <p class="text-xs text-slate-500 mt-2 leading-relaxed">Developing and presenting educational models on renewable biogas recovery, circular bio-economy, and sanitation safety for rural students around Roorkee under the PMRF national mandates.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gallery Grid -->
+                <div class="space-y-6 pt-6">
+                    <h3 class="text-xl font-bold text-slate-900"><i class="fa-solid fa-images text-indigo-600 mr-2"></i> Gallery</h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                        <!-- Image item 1 -->
+                        <div class="bg-white rounded-xl overflow-hidden border border-slate-200 shadow-sm hover:scale-[1.02] transition">
+                            <div class="h-44 bg-slate-100 flex items-center justify-center text-slate-300">
+                                <i class="fa-solid fa-water-ladder text-5xl"></i>
+                            </div>
+                            <div class="p-3">
+                                <h4 class="font-bold text-slate-800 text-xs">Field Gas Sampling</h4>
+                                <p class="text-[10px] text-slate-500 mt-0.5">Monitoring diffusive methane fluxes using custom built chamber arrays.</p>
+                            </div>
+                        </div>
+                        <!-- Image item 2 -->
+                        <div class="bg-white rounded-xl overflow-hidden border border-slate-200 shadow-sm hover:scale-[1.02] transition">
+                            <div class="h-44 bg-slate-100 flex items-center justify-center text-slate-300">
+                                <i class="fa-solid fa-flask-vial text-5xl"></i>
+                            </div>
+                            <div class="p-3">
+                                <h4 class="font-bold text-slate-800 text-xs">Algal Bioreactor Setup</h4>
+                                <p class="text-[10px] text-slate-500 mt-0.5">Continuous culturing for optimization of volatile solids feed.</p>
+                            </div>
+                        </div>
+                        <!-- Image item 3 -->
+                        <div class="bg-white rounded-xl overflow-hidden border border-slate-200 shadow-sm hover:scale-[1.02] transition">
+                            <div class="h-44 bg-slate-100 flex items-center justify-center text-slate-300">
+                                <i class="fa-solid fa-users text-5xl"></i>
+                            </div>
+                            <div class="p-3">
+                                <h4 class="font-bold text-slate-800 text-xs">Lab Research Group</h4>
+                                <p class="text-[10px] text-slate-500 mt-0.5">Members of the Environment and Biofuel Research Lab, HRED.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ================= CONTACT TAB ================= -->
+        <section id="contact" class="tab-content">
+            <div class="max-w-4xl mx-auto space-y-12">
+                <div class="text-center">
+                    <span class="text-xs font-bold text-indigo-600 uppercase tracking-widest bg-indigo-50 px-3 py-1 rounded-full">Connect</span>
+                    <h2 class="text-3xl font-extrabold text-slate-900 mt-3">Get In Touch</h2>
+                    <p class="text-sm text-slate-500 mt-2">Reach out for academic collaborations, research inquiries, or discussions</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+                    <!-- Professional Info card -->
+                    <div class="bg-white p-6 md:p-8 rounded-2xl border border-slate-200 shadow-sm space-y-6">
+                        <h3 class="text-xl font-bold text-slate-900">Contact Details</h3>
+                        
+                        <div class="space-y-4">
+                            <!-- Detail 1 -->
+                            <div class="flex items-start gap-3">
+                                <span class="text-indigo-600 text-lg mt-0.5"><i class="fa-solid fa-envelope"></i></span>
+                                <div>
+                                    <h4 class="font-bold text-slate-800 text-xs uppercase tracking-wide">Academic Email</h4>
+                                    <a href="mailto:amit_s@hre.iitr.ac.in" class="text-sm text-indigo-600 hover:text-indigo-800 font-semibold break-all">amit_s@hre.iitr.ac.in</a>
+                                </div>
+                            </div>
+                            <!-- Detail 2 -->
+                            <div class="flex items-start gap-3">
+                                <span class="text-indigo-600 text-lg mt-0.5"><i class="fa-solid fa-location-dot"></i></span>
+                                <div>
+                                    <h4 class="font-bold text-slate-800 text-xs uppercase tracking-wide">Office Location</h4>
+                                    <p class="text-sm text-slate-600 mt-0.5 leading-relaxed">
+                                        Environment and Biofuel Research Laboratory,<br>
+                                        Department of Hydro and Renewable Energy (HRED),<br>
+                                        Indian Institute of Technology Roorkee,<br>
+                                        Roorkee, Uttarakhand, India - 247667
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Direct Profile Links -->
+                        <div class="pt-4 border-t border-slate-100">
+                            <h4 class="font-bold text-slate-800 text-xs uppercase tracking-wide mb-3">Professional Profiles</h4>
+                            <div class="flex flex-col gap-2.5">
+                                <a href="https://scholar.google.com/citations?user=sW2C-aMAAAAJ&hl=en" target="_blank" class="text-xs text-indigo-600 hover:text-indigo-800 font-semibold flex items-center gap-2">
+                                    <i class="fa-solid fa-graduation-cap"></i> Google Scholar Profile
+                                </a>
+                                <a href="https://github.com/yaduwanshiamit" target="_blank" class="text-xs text-indigo-600 hover:text-indigo-800 font-semibold flex items-center gap-2">
+                                    <i class="fa-brands fa-github"></i> GitHub Code Repository
+                                </a>
+                                <a href="#" target="_blank" class="text-xs text-indigo-600 hover:text-indigo-800 font-semibold flex items-center gap-2">
+                                    <i class="fa-brands fa-linkedin"></i> LinkedIn Network
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Modern Contact form mock -->
+                    <div class="bg-white p-6 md:p-8 rounded-2xl border border-slate-200 shadow-sm">
+                        <h3 class="text-xl font-bold text-slate-900 mb-6">Send a Message</h3>
+                        
+                        <form action="#" method="POST" class="space-y-4" onsubmit="event.preventDefault(); alert('Message sending simulated successfully!');">
+                            <div>
+                                <label for="form-name" class="block text-xs font-bold text-slate-600 uppercase mb-1">Full Name</label>
+                                <input type="text" id="form-name" class="w-full px-3 py-2 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm" placeholder="Your Name" required>
+                            </div>
+                            <div>
+                                <label for="form-email" class="block text-xs font-bold text-slate-600 uppercase mb-1">Email Address</label>
+                                <input type="email" id="form-email" class="w-full px-3 py-2 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm" placeholder="your.name@institution.com" required>
+                            </div>
+                            <div>
+                                <label for="form-subject" class="block text-xs font-bold text-slate-600 uppercase mb-1">Subject</label>
+                                <input type="text" id="form-subject" class="w-full px-3 py-2 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm" placeholder="Academic / Research Inquiry" required>
+                            </div>
+                            <div>
+                                <label for="form-message" class="block text-xs font-bold text-slate-600 uppercase mb-1">Message</label>
+                                <textarea id="form-message" rows="4" class="w-full px-3 py-2 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm" placeholder="How can we collaborate?" required></textarea>
+                            </div>
+                            <button type="submit" class="w-full bg-indigo-600 text-white font-semibold py-2.5 rounded-lg hover:bg-indigo-700 transition shadow-md text-sm">
+                                Send Message
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer of Page -->
+    <footer class="bg-slate-900 text-slate-400 py-10 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+                <div class="flex flex-col text-center md:text-left">
+                    <span class="text-white text-md font-bold">Amit Singh</span>
+                    <span class="text-xs text-slate-500 mt-1">PMRF Research Scholar — Indian Institute of Technology Roorkee</span>
+                </div>
+                <div class="flex gap-4">
+                    <a href="https://scholar.google.com/citations?user=sW2C-aMAAAAJ&hl=en" target="_blank" class="hover:text-white transition" title="Google Scholar"><i class="fa-solid fa-graduation-cap text-lg"></i></a>
+                    <a href="https://github.com/yaduwanshiamit" target="_blank" class="hover:text-white transition" title="GitHub"><i class="fa-brands fa-github text-lg"></i></a>
+                    <a href="#" class="hover:text-white transition" title="LinkedIn"><i class="fa-brands fa-linkedin text-lg"></i></a>
+                </div>
+            </div>
+            <div class="mt-8 border-t border-slate-800 pt-6 text-center text-xs text-slate-600 flex flex-col sm:flex-row justify-between items-center gap-4">
+                <p>&copy; 2026 Amit Singh. All rights reserved.</p>
+                <p>Designed for GitHub Pages integration (<a href="https://yaduwanshiamit.github.io" class="hover:text-slate-400 underline transition">yaduwanshiamit.github.io</a>)</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Tab switching and Interactive Javascript -->
     <script>
-        // Mobile menu toggle
-        const mobileMenuButton = document.getElementById('mobile-menu-button');
-        const mobileMenu = document.getElementById('mobile-menu');
-        mobileMenuButton.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
+        // Tab switching controller
+        function switchTab(tabId) {
+            // Hide all tab components
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(content => content.classList.remove('active'));
+
+            // Show selected tab component
+            const selectedContent = document.getElementById(tabId);
+            if (selectedContent) {
+                selectedContent.classList.add('active');
+            }
+
+            // Update desktop active navigation link styles
+            const desktopButtons = document.querySelectorAll('.nav-btn');
+            desktopButtons.forEach(btn => {
+                if (btn.getAttribute('data-tab-btn') === tabId) {
+                    btn.classList.remove('text-slate-600', 'hover:text-indigo-600', 'hover:bg-slate-50');
+                    btn.classList.add('text-indigo-600', 'bg-indigo-50');
+                } else {
+                    btn.classList.remove('text-indigo-600', 'bg-indigo-50');
+                    btn.classList.add('text-slate-600', 'hover:text-indigo-600', 'hover:bg-slate-50');
+                }
+            });
+
+            // Update mobile active drawer link styles
+            const mobileButtons = document.querySelectorAll('.mobile-nav-btn');
+            mobileButtons.forEach(btn => {
+                const text = btn.textContent.trim().toLowerCase();
+                // Match text dynamically with tab target
+                if (
+                    (tabId === 'home' && text === 'home') ||
+                    (tabId === 'academic' && text.includes('academic')) ||
+                    (tabId === 'phd' && text.includes('phd')) ||
+                    (tabId === 'publications' && text.includes('publications')) ||
+                    (tabId === 'conferences' && text.includes('conferences')) ||
+                    (tabId === 'teaching' && text.includes('teaching')) ||
+                    (tabId === 'extracurricular' && text.includes('gallery'))
+                ) {
+                    btn.classList.remove('text-slate-700', 'hover:bg-slate-50');
+                    btn.classList.add('text-indigo-600', 'bg-indigo-50');
+                } else {
+                    btn.classList.remove('text-indigo-600', 'bg-indigo-50');
+                    btn.classList.add('text-slate-700', 'hover:bg-slate-50');
+                }
+            });
+
+            // Close mobile menu drawer after click
+            document.getElementById('mobile-menu').classList.add('hidden');
+
+            // Scroll smoothly to top of the content area
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Schematic diagram toggler (Home Page)
+        function switchSchematic(schematicId) {
+            // Hide all schematics
+            const schematics = document.querySelectorAll('.schematic-content');
+            schematics.forEach(sch => {
+                sch.classList.add('hidden');
+                sch.classList.remove('block');
+            });
+
+            // Show selected schematic
+            const activeSch = document.getElementById('sch-' + schematicId);
+            if (activeSch) {
+                activeSch.classList.remove('hidden');
+                activeSch.classList.add('block');
+            }
+
+            // Update tab button designs
+            const buttonIds = ['ghg', 'chamber', 'p2m'];
+            buttonIds.forEach(id => {
+                const btn = document.getElementById('btn-sch-' + id);
+                if (id === schematicId) {
+                    btn.classList.remove('border-transparent', 'text-slate-500', 'hover:text-slate-800');
+                    btn.classList.add('border-indigo-600', 'text-indigo-600', 'bg-white');
+                } else {
+                    btn.classList.remove('border-indigo-600', 'text-indigo-600', 'bg-white');
+                    btn.classList.add('border-transparent', 'text-slate-500', 'hover:text-slate-800');
+                }
+            });
+        }
+
+        // Toggle mobile menu drawer
+        document.getElementById('mobile-menu-toggle').addEventListener('click', function() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
         });
     </script>
 </body>
